@@ -275,6 +275,52 @@ exitMiniBtn.addEventListener('click', ()=>{
   } else showScreen(screen1);
 });
 
+/**
+ * Make the progress bar interactive (click, drag, touch)
+ */
+const progress = document.getElementById('progress');
+let isDragging = false;
+
+/* ------------------ Desktop: Click to jump ------------------ */
+progress.addEventListener('click', (e)=>{
+  const rect = progress.getBoundingClientRect();
+  const clickX = e.clientX - rect.left; // distance from left
+  const pct = clickX / rect.width;       // percentage
+  audio.currentTime = pct * audio.duration;
+});
+
+/* ------------------ Desktop: Drag to scrub ------------------ */
+progress.addEventListener('mousedown', ()=>{ isDragging = true; });
+
+document.addEventListener('mouseup', ()=>{ isDragging = false; });
+
+document.addEventListener('mousemove', (e)=>{
+  if(isDragging && audio.duration){
+    const rect = progress.getBoundingClientRect();
+    let moveX = e.clientX - rect.left;
+    moveX = Math.max(0, Math.min(moveX, rect.width)); // clamp
+    const pct = moveX / rect.width;
+    audio.currentTime = pct * audio.duration;
+  }
+});
+
+/* ------------------ Mobile: Touch events ------------------ */
+progress.addEventListener('touchstart', ()=>{ isDragging = true; });
+
+progress.addEventListener('touchend', ()=>{ isDragging = false; });
+
+progress.addEventListener('touchmove', (e)=>{
+  if(isDragging && audio.duration){
+    const touch = e.touches[0];
+    const rect = progress.getBoundingClientRect();
+    let moveX = touch.clientX - rect.left;
+    moveX = Math.max(0, Math.min(moveX, rect.width)); // clamp
+    const pct = moveX / rect.width;
+    audio.currentTime = pct * audio.duration;
+    e.preventDefault(); // prevent scrolling while dragging
+  }
+});
+  
 /* -------------------- Initialization -------------------- */
 
 /**
