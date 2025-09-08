@@ -245,7 +245,7 @@ function playNextInMini(){
   lastPlayedInMini = id;
   const meta = extraTracks[id];
   audio.src = meta.url;
-  playingInfo.textContent = "(Mini) " + meta.title;
+  playingInfo.textContent = "¯\_(ツ)_/¯";
   progFill.style.width = '0%';
   showScreen(screen1);
   audio.play().then(()=>{ playBtn.textContent="Stop"; }).catch(()=>{
