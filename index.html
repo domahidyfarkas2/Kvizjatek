@@ -125,7 +125,7 @@ function loadTrackById(id){
   if(!meta){ console.warn('Unknown track',id); return; }
   currentTrack = id;
   audio.src = meta.url;
-  playingInfo.textContent = meta.title + " — " + meta.composer;
+
   playBtn.textContent = "Play";
   progFill.style.width = '0%';
   hint.textContent = "";
