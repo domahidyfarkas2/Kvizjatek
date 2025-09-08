@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Classical Quiz Player</title>
+
+<style>
+  body{font-family:system-ui,Arial;max-width:720px;margin:20px auto;padding:16px}
+  .screen{display:none}
+  .visible{display:block}
+  button{padding:10px 14px;margin:6px 4px;font-size:16px}
+  .big{font-size:20px}
+  .center{text-align:center}
+  #progress{width:100%;height:10px;background:#eee;border-radius:6px;overflow:hidden}
+  #progress>div{height:100%;width:0%;background:linear-gradient(#ddd,#bbb)}
+</style>
+</head>
+<body>
+<h2>Szabad a gazda? — Klasszik zene kvíz</h2>
+
+<div id="screen1" class="screen">
+  <div id="playingInfo" class="center"></div>
+  <div id="progress"><div id="progFill"></div></div>
+  <div class="center">
+    <button id="playBtn">Play</button>
+    <button id="answerBtn" class="big">Szabad a gazda?</button>
+  </div>
+  <div id="hint" class="center" style="color:#555;margin-top:8px"></div>
+</div>
+
+<div id="screen2" class="screen">
+  <div id="answerText" style="font-size:18px;margin-bottom:12px"></div>
+  <div id="miniGameBtnWrap"></div>
+  <div style="margin-top:12px">
+    <a href="#" id="backToPlay">Vissza</a>
+  </div>
+</div>
+
+<div id="screen3" class="screen">
+  <div id="miniAnswerText" style="font-size:18px;margin-bottom:12px"></div>
+  <div>
+    <button id="nextMiniBtn">Kérem a következőt!</button>
+    <button id="exitMiniBtn">Kilépés</button>
+  </div>
+</div>
+
+<audio id="audio" preload="auto"></audio>
+
+<script>
+/* -------------------- CONFIG -------------------- */
+const tracks = {
+  "track001": {title:"Für Elise", composer:"L. van Beethoven", url:"https://example-cloud.com/audio/fur-elise.mp3"},
+  "track002": {title:"Canon in D", composer:"J. Pachelbel", url:"https://example-cloud.com/audio/canon-d.mp3"},
+  "track010": {title:"Mini Game Starter", composer:"Various", url:"https://example-cloud.com/audio/mini-starter.mp3", minigame:"mini1"}
+};
+
+const minigames = {
+  "mini1": ["m1a","m1b","m1c"]
+};
+
+const extraTracks = {
+  "m1a": {title:"Track A", composer:"Composer A", url:"https://example-cloud.com/audio/m1a.mp3"},
+  "m1b": {title:"Track B", composer:"Composer B", url:"https://example-cloud.com/audio/m1b.mp3"},
+  "m1c": {title:"Track C", composer:"Composer C", url:"https://example-cloud.com/audio/m1c.mp3"}
+};
+
+/* -------------------- DOM References -------------------- */
+const audio = document.getElementById('audio');
+const playBtn = document.getElementById('playBtn');
+const answerBtn = document.getElementById('answerBtn');
+const progFill = document.getElementById('progFill');
+const hint = document.getElementById('hint');
+const playingInfo = document.getElementById('playingInfo');
+
+const screen1 = document.getElementById('screen1'); 
+const screen2 = document.getElementById('screen2'); 
+const screen3 = document.getElementById('screen3'); 
+
+const answerText = document.getElementById('answerText'); 
+const miniGameBtnWrap = document.getElementById('miniGameBtnWrap'); 
+const backToPlay = document.getElementById('backToPlay');
+
+const miniAnswerText = document.getElementById('miniAnswerText'); 
+const nextMiniBtn = document.getElementById('nextMiniBtn'); 
+const exitMiniBtn = document.getElementById('exitMiniBtn'); 
+
+/* -------------------- State Variables -------------------- */
+let currentTrack = null;        
+let currentMinigame = null;     
+let minigameQueue = [];         
+let lastPlayedInMini = null;
+
+/* -------------------- Utility Functions -------------------- */
+
+/**
+ * Show the given screen and hide all others.
+ * @param {HTMLElement} el - The screen element to show
+ */
+function showScreen(el){
+  screen1.classList.remove('visible');
+  screen2.classList.remove('visible');
+  screen3.classList.remove('visible');
+  el.classList.add('visible');
+}
+
+/**
+ * Get URL query parameter by name.
+ * @param {string} name - Parameter name
+ * @returns {string|null} - Parameter value or null if not found
+ */
+function param(name){
+  const u = new URL(location.href);
+  return u.searchParams.get(name);
+}
+
+/**
+ * Load a track by its ID into SCREEN1.
+ * Updates audio source, track info, progress bar, and shows mini-game button if available.
+ * @param {string} id - Track ID
+ */
+function loadTrackById(id){
+  let meta = tracks[id] || extraTracks[id];
+  if(!meta){ console.warn('Unknown track',id); return; }
+  currentTrack = id;
+  audio.src = meta.url;
+  playingInfo.textContent = meta.title + " — " + meta.composer;
+  playBtn.textContent = "Play";
+  progFill.style.width = '0%';
+  hint.textContent = "";
+  showScreen(screen1);
+
+  // MINI-GAME button
+  const trackMeta = tracks[id];
+  miniGameBtnWrap.innerHTML = '';
+  if(trackMeta && trackMeta.minigame){
+    const b = document.createElement('button');
+    b.textContent = 'MINI-GAME';
+    b.onclick = () => startMiniGame(trackMeta.minigame);
+    miniGameBtnWrap.appendChild(b);
+  }
+}
+
+/**
+ * Shuffle an array in-place using Fisher-Yates algorithm.
+ * @param {Array} a - Array to shuffle
+ */
+function shuffleArray(a){
+  for(let i=a.length-1;i>0;i--){
+    const j = Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+}
+
+/* -------------------- Event Listeners -------------------- */
+
+/**
+ * Play/Stop button handler.
+ * Toggles playback of current audio track.
+ */
+playBtn.addEventListener('click', async ()=>{
+  if(audio.paused){
+    try{
+      await audio.play();
+      playBtn.textContent = "Stop";
+    }catch(e){
+      hint.textContent = "A böngésző megakadályozta az automatikus lejátszást. Kérjük, érints a lejátszó gombot újra.";
+    }
+  } else {
+    audio.pause();
+    audio.currentTime = 0;
+    playBtn.textContent = "Play";
+  }
+});
+
+/**
+ * Update progress bar as audio plays.
+ */
+audio.addEventListener('timeupdate', ()=>{
+  if(audio.duration){
+    const pct = Math.floor(100 * audio.currentTime / audio.duration);
+    progFill.style.width = pct + '%';
+  }
+});
+
+/**
+ * Reset play button when audio ends.
+ */
+audio.addEventListener('ended', ()=>{ playBtn.textContent = "Play"; });
+
+/**
+ * ANSWER button handler.
+ * Stops audio and shows SCREEN2 (regular track) or SCREEN3 (mini-game).
+ */
+answerBtn.addEventListener('click', ()=>{
+  audio.pause();
+  playBtn.textContent = "Play";
+
+  if(currentMinigame){
+    const meta = extraTracks[lastPlayedInMini] || tracks[lastPlayedInMini];
+    miniAnswerText.textContent = `${meta.title} — ${meta.composer}`;
+    showScreen(screen3);
+  } else {
+    const meta = tracks[currentTrack];
+    answerText.textContent = `${meta.title} — ${meta.composer}`;
+    showScreen(screen2);
+  }
+});
+
+/**
+ * BACK link handler: return from SCREEN2 to SCREEN1.
+ */
+backToPlay.addEventListener('click', (e)=>{
+  e.preventDefault();
+  showScreen(screen1);
+});
+
+/* -------------------- Mini-game Functions -------------------- */
+
+/**
+ * Start a mini-game.
+ * Shuffles the mini-game tracks and starts the first one.
+ * @param {string} miniName - Mini-game name (key in minigames)
+ */
+function startMiniGame(miniName){
+  currentMinigame = miniName;
+  const pool = (minigames[miniName] || []).slice();
+  shuffleArray(pool);
+  minigameQueue = pool.slice();
+  playNextInMini();
+}
+
+/**
+ * Play next track in current mini-game.
+ * Updates SCREEN1 and plays audio automatically if possible.
+ */
+function playNextInMini(){
+  if(minigameQueue.length === 0){
+    currentMinigame = null;
+    showScreen(screen2);
+    return;
+  }
+  const id = minigameQueue.shift();
+  lastPlayedInMini = id;
+  const meta = extraTracks[id];
+  audio.src = meta.url;
+  playingInfo.textContent = "(Mini) " + meta.title;
+  progFill.style.width = '0%';
+  showScreen(screen1);
+  audio.play().then(()=>{ playBtn.textContent="Stop"; }).catch(()=>{
+    playBtn.textContent="Play"; 
+    hint.textContent="Érintsd a lejátszás gombot, hogy elinduljon a hang.";
+  });
+}
+
+/**
+ * NEXT button in SCREEN3: play next mini-game track.
+ */
+nextMiniBtn.addEventListener('click', ()=>{
+  playNextInMini();
+});
+
+/**
+ * EXIT button in SCREEN3: exit mini-game.
+ * Returns to SCREEN2 for parent track.
+ */
+exitMiniBtn.addEventListener('click', ()=>{
+  currentMinigame = null;
+  minigameQueue = [];
+  const parent = tracks[currentTrack];
+  if(parent){ 
+    answerText.textContent = `${parent.title} — ${parent.composer}`; 
+    showScreen(screen2); 
+  } else showScreen(screen1);
+});
+
+/* -------------------- Initialization -------------------- */
+
+/**
+ * On page load:
+ * - Check if ?track=ID is provided in URL
+ * - Load track if valid, otherwise show landing message
+ */
+(function init(){
+  const t = param('track');
+  if(t && (tracks[t] || extraTracks[t])){
+    loadTrackById(t);
+  } else {
+    playingInfo.textContent = "Nincs megadott track. Ellenőrizd a QR kódot.";
+    hint.textContent = "Próbáld beolvasni a kártyán lévő QR kódot.";
+    showScreen(screen1);
+  }
+})();
+</script>
+</body>
+</html>
