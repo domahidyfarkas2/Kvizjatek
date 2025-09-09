@@ -53,7 +53,7 @@ const tracks = {
   "track001": {title:"Masques", composer:"Debussy", url:"https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Debussy - Masques.mp3"},
   "track002": {title:"Bagatelle sans tonalité", composer:"Liszt", url:"https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Franz Liszt - Bagatelle sans tonalité, S.216a (Gardon).mp3"},
   "track003": {title:"C-moll fantázia", composer:"Mozart", url:"https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wolfgang Amadeus Mozart - Fantasia No. 4 in C Minor, K. 475 [Complete] (Piano Solo).mp3"},
-  "track004": {title:"A Walkürök lovaglása", composer:"Wagner", url:"https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner a walkürök lovaglása.mp3", minigame:"mini1"}
+  "track004": {title:"A Walkürök lovaglása", composer:"Wagner", url:"https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner a walkürök lovaglása.mp3", minigame:"mini1"},
   "track010": {title:"...", composer:"Various", url:"https://example-cloud.com/audio/mini-starter.mp3", minigame:"mini1"}
 };
 
@@ -290,49 +290,55 @@ exitMiniBtn.addEventListener('click', ()=>{
   } else showScreen(screen1);
 });
 
-/**
- * Make the progress bar interactive (click, drag, touch)
- */
+// Interactive progress bar
 const progress = document.getElementById('progress');
 let isDragging = false;
 
-/* ------------------ Desktop: Click to jump ------------------ */
-progress.addEventListener('click', (e)=>{
-  const rect = progress.getBoundingClientRect();
-  const clickX = e.clientX - rect.left; // distance from left
-  const pct = clickX / rect.width;       // percentage
-  audio.currentTime = pct * audio.duration;
-});
-
-/* ------------------ Desktop: Drag to scrub ------------------ */
-progress.addEventListener('mousedown', ()=>{ isDragging = true; });
-
-document.addEventListener('mouseup', ()=>{ isDragging = false; });
-
-document.addEventListener('mousemove', (e)=>{
-  if(isDragging && audio.duration){
-    const rect = progress.getBoundingClientRect();
-    let moveX = e.clientX - rect.left;
-    moveX = Math.max(0, Math.min(moveX, rect.width)); // clamp
-    const pct = moveX / rect.width;
-    audio.currentTime = pct * audio.duration;
+audio.addEventListener('loadedmetadata', ()=>{
+  // Ensure duration is known
+  if(audio.duration){
+    progFill.style.width = (audio.currentTime / audio.duration * 100) + '%';
   }
 });
 
-/* ------------------ Mobile: Touch events ------------------ */
+audio.addEventListener('timeupdate', ()=>{
+  if(!isDragging && audio.duration){
+    progFill.style.width = (audio.currentTime / audio.duration * 100) + '%';
+  }
+});
+
+// Click to jump
+progress.addEventListener('click', (e)=>{
+  if(!audio.duration) return;
+  const rect = progress.getBoundingClientRect();
+  let pct = (e.clientX - rect.left)/rect.width;
+  pct = Math.max(0, Math.min(1, pct));
+  audio.currentTime = pct*audio.duration;
+});
+
+// Drag with mouse
+progress.addEventListener('mousedown', ()=>{ isDragging = true; });
+document.addEventListener('mouseup', ()=>{ isDragging = false; });
+document.addEventListener('mousemove', (e)=>{
+  if(isDragging && audio.duration){
+    const rect = progress.getBoundingClientRect();
+    let pct = (e.clientX - rect.left)/rect.width;
+    pct = Math.max(0, Math.min(1, pct));
+    audio.currentTime = pct*audio.duration;
+  }
+});
+
+// Touch for mobile
 progress.addEventListener('touchstart', ()=>{ isDragging = true; });
-
 progress.addEventListener('touchend', ()=>{ isDragging = false; });
-
 progress.addEventListener('touchmove', (e)=>{
   if(isDragging && audio.duration){
     const touch = e.touches[0];
     const rect = progress.getBoundingClientRect();
-    let moveX = touch.clientX - rect.left;
-    moveX = Math.max(0, Math.min(moveX, rect.width)); // clamp
-    const pct = moveX / rect.width;
-    audio.currentTime = pct * audio.duration;
-    e.preventDefault(); // prevent scrolling while dragging
+    let pct = (touch.clientX - rect.left)/rect.width;
+    pct = Math.max(0, Math.min(1, pct));
+    audio.currentTime = pct*audio.duration;
+    e.preventDefault();
   }
 });
   
