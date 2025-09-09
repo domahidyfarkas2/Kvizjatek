@@ -363,6 +363,7 @@ function playNextInMini(){
     mainTitle.textContent = meta.question; 
     hint.textContent = meta.question;
   }
+  audio.src = encodeURI(meta.url);
   audio.play().then(()=>{ playBtn.textContent="Pause"; })
     .catch(()=>{ playBtn.textContent="Play"; hint.textContent="Érintsd a lejátszás gombot, hogy elinduljon a hang."; });
 }
