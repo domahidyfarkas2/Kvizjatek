@@ -304,6 +304,7 @@ function playNextInMini(){
   if(miniCycles >= (mg?.limit || Infinity) || minigameQueue.length === 0){
     currentMinigame = null;
     hint.textContent = "";
+    mainTitle.textContent = "Tippelj! Ha a zeneszerzőt és a darabot is eltalálod, az 2 pontot ér, ha csak az egyiket, az egyet.";
     showScreen(screen2);
     return;
   }
@@ -313,10 +314,21 @@ function playNextInMini(){
   miniCycles++;
 
   const meta = extraTracks[id];
+
   audio.src = meta.url;
   playingInfo.textContent = "Zene lejátszása...";
   progFill.style.width = '0%';
   showScreen(screen1);
+
+  // Set dynamic hint/title
+  if(meta.question){ 
+    mainTitle.textContent = meta.question; 
+    hint.textContent = meta.question;
+  } else {
+    const defaultText = `Ha helyesen válaszolsz, kapsz 1 pontot és továbbléphetsz a következő kérdésre. Maximum ${mg.limit} kört játszhatsz.`;
+    mainTitle.textContent = defaultText;
+    hint.textContent = defaultText;
+  }
 
   audio.play().then(()=>{ playBtn.textContent="Pause"; })
     .catch(()=>{
