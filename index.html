@@ -479,7 +479,40 @@ function playNextInMini(){
 playBtn.textContent = "Play";
 hint.textContent += " Érintsd a Play gombot, hogy elinduljon a hang.";
   
-    });
+    })function playNextInMini(){
+  const mg = minigames[currentMinigame];
+
+  if(miniCycles >= (mg?.limit || Infinity) || minigameQueue.length === 0){
+    currentMinigame = null;
+    hint.textContent = "";
+    mainTitle.textContent = "Tippelj! Ha a zeneszerzőt és a darabot is eltalálod, az 2 pontot ér, ha csak az egyiket, az egyet.";
+    showScreen(screen2);
+    return;
+  }
+
+  const id = minigameQueue.shift();
+  lastPlayedInMini = id;
+  miniCycles++;
+
+  const meta = extraTracks[id];
+
+  audio.src = meta.url;
+  playingInfo.textContent = "Zene betöltve. Érintsd a Play gombot a lejátszáshoz.";
+  progFill.style.width = '0%';
+  showScreen(screen1);
+
+  // Set dynamic hint/title
+  if(meta.question){ 
+    mainTitle.textContent = meta.question; 
+    hint.textContent = meta.question + ` (Maximum ${mg.limit} kört játszhatsz.)`;
+  } else {
+    const defaultText = `Ha helyesen válaszolsz, kapsz 1 pontot és továbbléphetsz a következő kérdésre. Maximum ${mg.limit} kört játszhatsz.`;
+    mainTitle.textContent = defaultText;
+    hint.textContent = defaultText;
+  }
+
+  // Don’t autoplay — require user interaction
+  playBtn.textContent = "Play";
 }
 
 nextMiniBtn.addEventListener('click', ()=>{
