@@ -49,180 +49,203 @@
 
 <script>
 /* -------------------- CONFIG -------------------- */
-  const tracks = {
-"track001": {
-  title: `Masques`,
-  composer: `Debussy`,
-  url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Debussy - Masques.mp3"
-},
-"track002": {
-  title: `Bagatelle sans tonalité`,
-  composer: `Liszt`,
-  url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Franz Liszt - Bagatelle sans tonalité, S.216a (Gardon).mp3"
-},
-"track003": {
-  title: `C-moll fantázia`,
-  composer: `Mozart`,
-  url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wolfgang Amadeus Mozart - Fantasia No. 4 in C Minor, K. 475 [Complete] (Piano Solo).mp3"
-},
-"track004": {
-  title: `A Walkürök lovaglása`,
-  composer: `Wagner`,
-  url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner a walkürök lovaglása.mp3",
-  minigame: "mini1"
-},
-"track005": {
-  title: `5. szimfónia 1. tétel`,
-  composer: `Beethoven`,
-  url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 5. szimfónia 1. tétel.mp3",
-  minigame: "mini2"
-},
-"track006": {
-  title: `7. szimfónia 2. tétel`,
-  composer: `Beethoven`,
-  url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 7. szimfónia 2. tétel.mp3",
-  minigame: "mini2"
-},
-"track007": {
-  title: `9. szimfónia 2. tétel`,
-  composer: `Beethoven`,
-  url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 9. szimfónia 2. tétel.mp3",
-  minigame: "mini2"
-},
-"track008": {
-  title: `Egmont nyitány vége`,
-  composer: `Beethoven`,
-  url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven Egmont nyitány vége.mp3",
-  minigame: "mini2"
-},
-"track009": {
-  title: `Holdfény szonáta 1. tétel`,
-  composer: `Beethoven`,
-  url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven Holdfény szonáta 1. tétel.mp3"
-},
-"track010": {
-  title: `Holdfény szonáta 3. tétel`,
-  composer: `Beethoven`,
-  url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven Holdfény szonáta 3. tétel.mp3"
-},
-"track011": {
-  title: `Pathetique szonáta 1. tétel`,
-  composer: `Beethoven`,
-  url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven Pathetique szonáta 1. tétel.mp3"
-},
-"track012": {
-  title: `Hegedűverseny 3. tétel`,
-  composer: `Beethoven`,
-  url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven hegedűverseny 3. tétel.mp3"
-}
-}  
-;
+const tracks = {
+  "track001": {
+    title: `Masques`,
+    composer: `Debussy`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Debussy - Masques.mp3`
+  },
+
+  "track002": {
+    title: `Bagatelle sans tonalité`,
+    composer: `Liszt`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Franz Liszt - Bagatelle sans tonalité, S.216a (Gardon).mp3`
+  },
+
+  "track003": {
+    title: `C-moll fantázia`,
+    composer: `Mozart`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wolfgang Amadeus Mozart - Fantasia No. 4 in C Minor, K. 475 [Complete] (Piano Solo).mp3`
+  },
+
+  "track004": {
+    title: `A Walkürök lovaglása`,
+    composer: `Wagner`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner a walkürök lovaglása.mp3`,
+    minigame: "mini1"
+  },
+
+  "track005": {
+    title: `5. szimfónia 1. tétel`,
+    composer: `Beethoven`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 5. szimfónia 1. tétel.mp3`,
+    minigame: "mini2"
+  },
+
+  "track006": {
+    title: `7. szimfónia 2. tétel`,
+    composer: `Beethoven`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 7. szimfónia 2. tétel.mp3`,
+    minigame: "mini2"
+  },
+
+  "track007": {
+    title: `9. szimfónia 2. tétel`,
+    composer: `Beethoven`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 9. szimfónia 2. tétel.mp3`,
+    minigame: "mini2"
+  },
+
+  "track008": {
+    title: `Egmont nyitány vége`,
+    composer: `Beethoven`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven Egmont nyitány vége.mp3`,
+    minigame: "mini2"
+  },
+
+  "track009": {
+    title: `Holdfény szonáta 1. tétel`,
+    composer: `Beethoven`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven Holdfény szonáta 1. tétel.mp3`
+  },
+
+  "track010": {
+    title: `Holdfény szonáta 3. tétel`,
+    composer: `Beethoven`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven Holdfény szonáta 3. tétel.mp3`
+  },
+
+  "track011": {
+    title: `Pathetique szonáta 1. tétel`,
+    composer: `Beethoven`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven Pathetique szonáta 1. tétel.mp3`
+  },
+
+  "track012": {
+    title: `Hegedűverseny 3. tétel`,
+    composer: `Beethoven`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven hegedűverseny 3. tétel.mp3`
+  }
+};
 
 const minigames = {
-  // Wagner leitmotif minigame
   "mini1": {
     tracks: ["m1.1","m1.2","m1.3","m1.4","m1.5","m1.6","m1.7","m1.8","m1.9","m1.10","m1.11","m1.12","m1.13","m1.14","m1.15","m1.16"],
-    limit: 5  // maximum SCREEN1→SCREEN3 cycles
+    limit: 5
   },
-  // Beethoven szimfóniák minigame
-    "mini2": {
+  "mini2": {
     tracks: ["m2.1","m2.2","m2.3","m2.4","m2.5","m2.6","m2.7","m2.8","m2.9","m2.10","m2.11","m2.12","m2.13","m2.14","m2.15"],
-    limit: 4  // maximum SCREEN1→SCREEN3 cycles
+    limit: 4
   }
 };
 
 const extraTracks = {
-  // Wagner minigame
+  /* -------------------- Wagner mini-game -------------------- */
   "m1.1": {
     title: `Valhalla (A Rajna kincse)`,
     composer: `Richard Wagner`,
     url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/12a Valhalla (first segment) _ Der Ring Des Nibelungen [Man7MwIHYSw].mp3`,
     question: `Melyik helyszínhez tartozik ez a motívum?`
   },
+
   "m1.2": {
     title: `Wotan dárdája (A Rajna kincse)`,
     composer: `Richard Wagner`,
     url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/13 Spear _ Der Ring Des Nibelungen.mp3`,
     question: `Melyik tárgyhoz tartozik ez a motívum és melyik szereplőhöz tartozik a tárgy?`
   },
+
   "m1.3": {
     title: `óriások (A Rajna kincse)`,
     composer: `Richard Wagner`,
     url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/16 Giants _ Der Ring Des Nibelungen.mp3`,
     question: `Melyik szereplőkhöz tartozik ez a motívum?`
   },
+
   "m1.4": {
     title: `Loge (A Rajna kincse)`,
     composer: `Richard Wagner`,
     url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/21 Loge _ Der Ring Des Nibelungen.mp3`,
     question: `Melyik szereplőhöz tartozik ez a motívum?`
   },
+
   "m1.5": {
     title: `Nibelheim (A Rajna kincse)`,
     composer: `Richard Wagner`,
     url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/24 Nibelheim _ Der Ring Des Nibelungen.mp3`,
     question: `Melyik helyszínhez tartozik ez a motívum?`
   },
+
   "m1.6": {
     title: `Tarnhelm / ködsisak (A Rajna kincse)`,
     composer: `Richard Wagner`,
     url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/25 Tarnhelm _ Der Ring Des Nibelungen.mp3`,
     question: `Melyik tárgyhoz tartozik ez a motívum?`
   },
+
   "m1.7": {
     title: `kard`,
     composer: `Richard Wagner`,
     url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/37 Sword _ Der Ring Des Nibelungen.mp3`,
     question: `Melyik tárgyhoz tartozik ez a motívum?`
   },
+
   "m1.8": {
     title: `vihar (A walkür)`,
     composer: `Richard Wagner`,
     url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/40 Storm _ Der Ring Des Nibelungen [MU4nXZa4y08].mp3`,
     question: `Itt éppen mi történik?`
   },
+
   "m1.9": {
     title: `Siegmund és Sieglinde (A walkür)`,
     composer: `Richard Wagner`,
     url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/43 The Drink _ Der Ring Des Nibelungen.mp3`,
     question: `Kiket látunk a színpadon?`
   },
+
   "m1.10": {
     title: `Hunding (A walkür)`,
     composer: `Richard Wagner`,
     url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/46 Hunding _ Der Ring Des Nibelungen.mp3`,
     question: `Kihez tartozik ez a baljós motívum?`
   },
+
   "m1.11": {
     title: `Siegmund tavaszi dala (A walkür, 1. felvonás vége)`,
     composer: `Richard Wagner`,
     url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/50 Spring Song _ Der Ring Des Nibelungen.mp3`,
     question: `Kit hallunk?`
   },
+
   "m1.12": {
     title: `sors-motívum (A walkür)`,
     composer: `Richard Wagner`,
     url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/60 Fate _ Der Ring Des Nibelungen [eK2LxAJErr0].mp3`,
     question: `Hogy szokták hívni ezt a motívumot?`
   },
+
   "m1.13": {
     title: `Siegfried motívuma (Siegfried)`,
     composer: `Richard Wagner`,
     url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/65 Siegfried _ Der Ring Des Nibelungen.mp3`,
     question: `Kihez tartozik ez a motívum?`
   },
+
   "m1.14": {
     title: `Siegfried kovács-dala (Siegfried, 1. felvonás)`,
     composer: `Richard Wagner`,
     url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/84 Siegfried's Forging Song II _ Der Ring Des Nibelungen.mp3`,
     question: `Itt mi történik éppen?`
   },
+
   "m1.15": {
     title: `Brünhilde ébredése (Siegfried, 3. felvonás vége)`,
     composer: `Richard Wagner`,
     url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/91 Revival _ Der Ring Des Nibelungen.mp3`,
     question: `Itt mi történik éppen?`
   },
+
   "m1.16": {
     title: `Siegfried-idill`,
     composer: `Richard Wagner`,
@@ -230,78 +253,92 @@ const extraTracks = {
     question: `Mi a neve ennek a részletnek és mi történik éppen?`
   },
 
-  // Beethoven minigame
+  /* -------------------- Beethoven mini-game -------------------- */
   "m2.1": {
     title: `3. szimfónia 1. tétel`,
     composer: `Beethoven`,
     url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 3. szimfónia 1. tétel.mp3`
   },
+
   "m2.2": {
     title: `3. szimfónia 2. tétel`,
     composer: `Beethoven`,
     url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 3. szimfónia 2. tétel.mp3`
   },
+
   "m2.3": {
     title: `3. szimfónia 4. tétel`,
     composer: `Beethoven`,
     url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 3. szimfónia 4. tétel.mp3`
   },
+
   "m2.4": {
-    title: `5. szimfónia 2. tétel, La folia`,
+    title: `5. szimfónia 2. tétel la follia`,
     composer: `Beethoven`,
     url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 5. szimfónia 2. tétel la follia.mp3`,
     question: `Pluszpont szerzési lehetőség: Beethoven itt megidéz egy a barokk zenében népszerű vándormotívumot. Mi ennek a motívumnak a neve? További pluszpontszerzési lehetőség: melyik Britney Spears szám épül ugyanerre az akkordmenetre?`
   },
+
   "m2.5": {
     title: `5. szimfónia 3. tétel`,
     composer: `Beethoven`,
     url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 5. szimfónia 3. tétel.mp3`
   },
+
   "m2.6": {
     title: `5. szimfónia 3. és 4. tétel közti átvezető rész`,
     composer: `Beethoven`,
     url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 5. szimfónia 3. és 4. tétel közti átvezető rész.mp3`
   },
+
   "m2.7": {
     title: `6. szimfónia 4. tétel 2. fele`,
     composer: `Beethoven`,
     url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 6. szimfónia 4. tétel 2. fele.mp3`
   },
+
   "m2.8": {
     title: `6. szimfónia 5. tétel`,
     composer: `Beethoven`,
     url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 6. szimfónia 5. tétel.mp3`
   },
+
   "m2.9": {
     title: `7. szimfónia 1. tétel`,
     composer: `Beethoven`,
     url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 7. szimfónia 1. tétel.mp3`
   },
+
   "m2.10": {
     title: `7. szimfónia 3. tétel`,
     composer: `Beethoven`,
     url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 7. szimfónia 3. tétel.mp3`
   },
+
   "m2.11": {
     title: `7. szimfónia 4. tétel`,
     composer: `Beethoven`,
     url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 7. szimfónia 4. tétel.mp3`
   },
+
   "m2.12": {
     title: `8. szimfónia 1. tétel expozíció vége`,
     composer: `Beethoven`,
     url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 8. szimfónia 1. tétel expozíció vége.mp3`
   },
+
   "m2.13": {
     title: `8. szimfónia 2. tétel`,
     composer: `Beethoven`,
     url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 8. szimfónia 2. tétel.mp3`
   },
+
   "m2.14": {
     title: `8. szimfónia 4. tétel`,
     composer: `Beethoven`,
     url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 8. szimfónia 4. tétel.mp3`
   },
+
   "m2.15": {
     title: `9. szimfónia 4. tétel`,
     composer: `Beethoven`,
@@ -309,271 +346,87 @@ const extraTracks = {
   }
 };
 
-/* -------------------- DOM References -------------------- */
-const audio = document.getElementById('audio');
-const playBtn = document.getElementById('playBtn');
-const answerBtn = document.getElementById('answerBtn');
-const progFill = document.getElementById('progFill');
-const hint = document.getElementById('hint');
-const playingInfo = document.getElementById('playingInfo');
+/* -------------------- APP LOGIC -------------------- */
+const audio=document.getElementById("audio");
+const screen1=document.getElementById("screen1");
+const screen2=document.getElementById("screen2");
+const screen3=document.getElementById("screen3");
+const playingInfo=document.getElementById("playingInfo");
+const progFill=document.getElementById("progFill");
+const playBtn=document.getElementById("playBtn");
+const answerBtn=document.getElementById("answerBtn");
+const answerText=document.getElementById("answerText");
+const backToPlay=document.getElementById("backToPlay");
+const miniGameBtnWrap=document.getElementById("miniGameBtnWrap");
+const miniAnswerText=document.getElementById("miniAnswerText");
+const nextMiniBtn=document.getElementById("nextMiniBtn");
+const exitMiniBtn=document.getElementById("exitMiniBtn");
+const mainTitle=document.getElementById("mainTitle");
+const hint=document.getElementById("hint");
 
-const screen1 = document.getElementById('screen1'); 
-const screen2 = document.getElementById('screen2'); 
-const screen3 = document.getElementById('screen3'); 
+let currentTrack=null;
+let currentMini=null;
+let miniIndex=0;
+let cycles=0;
 
-const answerText = document.getElementById('answerText'); 
-const miniGameBtnWrap = document.getElementById('miniGameBtnWrap'); 
-const backToPlay = document.getElementById('backToPlay');
+function show(scr){screen1.classList.remove("visible");screen2.classList.remove("visible");screen3.classList.remove("visible");scr.classList.add("visible");}
 
-const miniAnswerText = document.getElementById('miniAnswerText'); 
-const nextMiniBtn = document.getElementById('nextMiniBtn'); 
-const exitMiniBtn = document.getElementById('exitMiniBtn'); 
-
-/* -------------------- State Variables -------------------- */
-let currentTrack = null;        
-let currentMinigame = null;     
-let minigameQueue = [];         
-let lastPlayedInMini = null;
-let miniCycles = 0;  // counts SCREEN1→SCREEN3 cycles
-
-/* -------------------- Utility Functions -------------------- */
-function showScreen(el){
-  screen1.classList.remove('visible');
-  screen2.classList.remove('visible');
-  screen3.classList.remove('visible');
-  el.classList.add('visible');
+function loadTrack(id){
+  let tr=tracks[id];
+  currentTrack=tr;
+  audio.src=tr.url;
+  mainTitle.textContent="Tippelj! Ha a zeneszerzőt és a darabot is eltalálod, az 2 pontot ér, ha csak az egyiket, az egyet.";
+  hint.textContent="";
+  show(screen1);
 }
 
-function param(name){
-  const u = new URL(location.href);
-  return u.searchParams.get(name);
-}
+playBtn.onclick=()=>audio.play();
+audio.ontimeupdate=()=>{progFill.style.width=(audio.currentTime/audio.duration*100)+"%";};
+document.getElementById("progress").onclick=(e)=>{let x=e.offsetX/ e.target.clientWidth;audio.currentTime=x*audio.duration;};
 
-function loadTrackById(id){
-  let meta = tracks[id] || extraTracks[id];
-  if(!meta){ console.warn('Unknown track',id); return; }
-  currentTrack = id;
-  audio.src = meta.url;
-  playingInfo.textContent = "Zene lejátszása...";
-  playBtn.textContent = "Play";
-  progFill.style.width = '0%';
-  hint.textContent = "";
-  showScreen(screen1);
-
-  // MINI-GAME button
-  const trackMeta = tracks[id];
-  miniGameBtnWrap.innerHTML = '';
-  if(trackMeta && trackMeta.minigame){
-    const b = document.createElement('button');
-    b.textContent = 'MINI-GAME';
-    b.onclick = () => startMiniGame(trackMeta.minigame);
-    miniGameBtnWrap.appendChild(b);
-  }
-}
-
-function shuffleArray(a){
-  for(let i=a.length-1;i>0;i--){
-    const j = Math.floor(Math.random()*(i+1));
-    [a[i],a[j]]=[a[j],a[i]];
-  }
-}
-
-/* -------------------- Event Listeners -------------------- */
-playBtn.addEventListener('click', async ()=>{
-  if(audio.paused){
-    try{
-      await audio.play();
-      playBtn.textContent = "Pause";
-    }catch(e){
-      hint.textContent = "A böngésző megakadályozta az automatikus lejátszást. Kérjük, érints a lejátszó gombot újra.";
-    }
-  } else {
-    audio.pause();
-    playBtn.textContent = "Play";
-  }
-});
-
-audio.addEventListener('timeupdate', ()=>{
-  if(audio.duration){
-    const pct = Math.floor(100 * audio.currentTime / audio.duration);
-    progFill.style.width = pct + '%';
-  }
-});
-
-audio.addEventListener('ended', ()=>{ playBtn.textContent = "Play"; });
-
-answerBtn.addEventListener('click', ()=>{
+answerBtn.onclick=()=>{
   audio.pause();
-  playBtn.textContent = "Play";
-
-  if(currentMinigame){
-    const meta = extraTracks[lastPlayedInMini] || tracks[lastPlayedInMini];
-    miniAnswerText.textContent = `${meta.title} — ${meta.composer}`;
-    showScreen(screen3);
-  } else {
-    const meta = tracks[currentTrack];
-    answerText.textContent = `${meta.title} — ${meta.composer}`;
-    showScreen(screen2);
+  answerText.textContent=`${currentTrack.composer} - ${currentTrack.title}`;
+  miniGameBtnWrap.innerHTML="";
+  if(currentTrack.minigame){
+    let btn=document.createElement("button");
+    btn.textContent="Indítsd a mini-játékot!";
+    btn.onclick=()=>startMini(currentTrack.minigame);
+    miniGameBtnWrap.appendChild(btn);
   }
-});
+  show(screen2);
+};
 
-backToPlay.addEventListener('click', (e)=>{
-  e.preventDefault();
-  showScreen(screen1);
-});
+backToPlay.onclick=(e)=>{e.preventDefault();show(screen1);};
+exitMiniBtn.onclick=()=>{loadTrack(getUrlParam("track"));};
 
-/* -------------------- Mini-game Functions -------------------- */
-const mainTitle = document.getElementById('mainTitle');
-  
-  function startMiniGame(miniName){
-  const mg = minigames[miniName];
-  if(!mg || !mg.tracks || mg.tracks.length === 0) return;
-
-  currentMinigame = miniName;
-  miniCycles = 0;                 
-  shuffleArray(mg.tracks);
-  minigameQueue = mg.tracks.slice();
-
-  // dynamic hint including limit
- const text = `Ha helyesen válaszolsz, kapsz 1 pontot és továbbléphetsz a következő kérdésre. Maximum ${mg.limit} kört játszhatsz.`;
-  hint.textContent = text;
-
-  // Replace main title with the same hint
-  mainTitle.textContent = text;
-  playNextInMini();
+function startMini(miniId){
+  currentMini=minigames[miniId];
+  miniIndex=0;cycles=0;
+  loadMini();
 }
 
-function playNextInMini(){
-  const mg = minigames[currentMinigame];
-
-  if(miniCycles >= (mg?.limit || Infinity) || minigameQueue.length === 0){
-    currentMinigame = null;
-    hint.textContent = "";
-    mainTitle.textContent = "Tippelj! Ha a zeneszerzőt és a darabot is eltalálod, az 2 pontot ér, ha csak az egyiket, az egyet.";
-    showScreen(screen2);
-    return;
-  }
-
-  const id = minigameQueue.shift();
-  lastPlayedInMini = id;
-  miniCycles++;
-
-  const meta = extraTracks[id];
-
-  audio.src = meta.url;
-  playingInfo.textContent = "Zene lejátszása...";
-  progFill.style.width = '0%';
-  showScreen(screen1);
-
-  // Set dynamic hint/title
-  if(meta.question){ 
-    mainTitle.textContent = meta.question; 
-    hint.textContent = meta.question;
-  } else {
-    const defaultText = `Ha helyesen válaszolsz, kapsz 1 pontot és továbbléphetsz a következő kérdésre. Maximum ${mg.limit} kört játszhatsz.`;
-    mainTitle.textContent = defaultText;
-    hint.textContent = defaultText;
-  }
-
- // Do not autoplay; just reset button and hint
-playBtn.textContent = "Play";
-hint.textContent += " Érintsd a Play gombot, hogy elinduljon a hang.";
-  
-    })function playNextInMini(){
-  const mg = minigames[currentMinigame];
-
-  if(miniCycles >= (mg?.limit || Infinity) || minigameQueue.length === 0){
-    currentMinigame = null;
-    hint.textContent = "";
-    mainTitle.textContent = "Tippelj! Ha a zeneszerzőt és a darabot is eltalálod, az 2 pontot ér, ha csak az egyiket, az egyet.";
-    showScreen(screen2);
-    return;
-  }
-
-  const id = minigameQueue.shift();
-  lastPlayedInMini = id;
-  miniCycles++;
-
-  const meta = extraTracks[id];
-
-  audio.src = meta.url;
-  playingInfo.textContent = "Zene betöltve. Érintsd a Play gombot a lejátszáshoz.";
-  progFill.style.width = '0%';
-  showScreen(screen1);
-
-  // Set dynamic hint/title
-  if(meta.question){ 
-    mainTitle.textContent = meta.question; 
-    hint.textContent = meta.question + ` (Maximum ${mg.limit} kört játszhatsz.)`;
-  } else {
-    const defaultText = `Ha helyesen válaszolsz, kapsz 1 pontot és továbbléphetsz a következő kérdésre. Maximum ${mg.limit} kört játszhatsz.`;
-    mainTitle.textContent = defaultText;
-    hint.textContent = defaultText;
-  }
-
-  // Don’t autoplay — require user interaction
-  playBtn.textContent = "Play";
+function loadMini(){
+  let limit=currentMini.limit;
+  if(cycles>=limit){exitMiniBtn.click();return;}
+  let tid=currentMini.tracks[miniIndex];
+  let tr=extraTracks[tid];
+  audio.src=tr.url;
+  mainTitle.textContent= tr.question ? tr.question : `Ha helyesen válaszolsz, kapsz 1 pontot és továbbléphetsz a következő kérdésre. Maximum ${currentMini.limit} kört játszhatsz`;
+  miniAnswerText.textContent=`${tr.composer} - ${tr.title}`;
+  show(screen3);
+  audio.play();
 }
 
-nextMiniBtn.addEventListener('click', ()=>{
-  playNextInMini();
-});
+nextMiniBtn.onclick=()=>{
+  cycles++;
+  miniIndex=(miniIndex+1)%currentMini.tracks.length;
+  loadMini();
+};
 
-exitMiniBtn.addEventListener('click', ()=>{
-  currentMinigame = null;
-  minigameQueue = [];
-  const parent = tracks[currentTrack];
-  if(parent){ 
-    answerText.textContent = `${parent.title} — ${parent.composer}`; 
-    showScreen(screen2); 
-  } else showScreen(screen1);
-});
-
-/* -------------------- Progress Bar Interaction -------------------- */
-const progress = document.getElementById('progress');
-let isDragging = false;
-
-progress.addEventListener('click', (e)=>{
-  const rect = progress.getBoundingClientRect();
-  const pct = (e.clientX - rect.left) / rect.width;
-  audio.currentTime = pct * audio.duration;
-});
-
-progress.addEventListener('mousedown', ()=>{ isDragging=true; });
-document.addEventListener('mouseup', ()=>{ isDragging=false; });
-document.addEventListener('mousemove', (e)=>{
-  if(isDragging && audio.duration){
-    const rect = progress.getBoundingClientRect();
-    let x = e.clientX - rect.left;
-    x = Math.max(0, Math.min(x, rect.width));
-    audio.currentTime = (x / rect.width) * audio.duration;
-  }
-});
-
-progress.addEventListener('touchstart', ()=>{ isDragging=true; });
-progress.addEventListener('touchend', ()=>{ isDragging=false; });
-progress.addEventListener('touchmove', (e)=>{
-  if(isDragging && audio.duration){
-    const touch = e.touches[0];
-    const rect = progress.getBoundingClientRect();
-    let x = touch.clientX - rect.left;
-    x = Math.max(0, Math.min(x, rect.width));
-    audio.currentTime = (x / rect.width) * audio.duration;
-    e.preventDefault();
-  }
-});
-
-/* -------------------- Initialization -------------------- */
-(function init(){
-  const t = param('track');
-  if(t && (tracks[t] || extraTracks[t])){
-    loadTrackById(t);
-  } else {
-    playingInfo.textContent = "Nincs megadott track. Ellenőrizd a QR kódot.";
-    hint.textContent = "Próbáld beolvasni a kártyán lévő QR kódot.";
-    showScreen(screen1);
-  }
-})();
+function getUrlParam(n){return new URLSearchParams(location.search).get(n);}
+let tid=getUrlParam("track");
+if(tid&&tracks[tid])loadTrack(tid);
 </script>
 </body>
 </html>
