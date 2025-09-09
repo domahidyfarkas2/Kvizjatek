@@ -73,38 +73,181 @@ const minigames = {
 };
 
 const extraTracks = {
-  "m1.1": { title:`Valhalla (A Rajna kincse)`, composer:`Richard Wagner`, url:`https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/12a Valhalla.mp3`, question:`Melyik helyszínhez tartozik ez a motívum?` },
-  "m1.2": { title:`Wotan dárdája (A Rajna kincse)`, composer:`Richard Wagner`, url:`https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/13 Spear.mp3`, question:`Melyik tárgyhoz tartozik ez a motívum és melyik szereplőhöz tartozik a tárgy?` },
-  "m1.3": { title:`óriások (A Rajna kincse)`, composer:`Richard Wagner`, url:`https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/16 Giants.mp3`, question:`Melyik szereplőkhöz tartozik ez a motívum?` },
-  "m1.4": { title:`Loge (A Rajna kincse)`, composer:`Richard Wagner`, url:`https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/21 Loge.mp3`, question:`Melyik szereplőhöz tartozik ez a motívum?` },
-  "m1.5": { title:`Nibelheim (A Rajna kincse)`, composer:`Richard Wagner`, url:`https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/24 Nibelheim.mp3`, question:`Melyik helyszínhez tartozik ez a motívum?` },
-  "m1.6": { title:`Tarnhelm / ködsisak (A Rajna kincse)`, composer:`Richard Wagner`, url:`https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/25 Tarnhelm.mp3`, question:`Melyik tárgyhoz tartozik ez a motívum?` },
-  "m1.7": { title:`kard`, composer:`Richard Wagner`, url:`https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/37 Sword.mp3`, question:`Melyik tárgyhoz tartozik ez a motívum?` },
-  "m1.8": { title:`vihar (A walkür)`, composer:`Richard Wagner`, url:`https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/40 Storm.mp3`, question:`Itt éppen mi történik?` },
-  "m1.9": { title:`Siegmund és Sieglinde (A walkür)`, composer:`Richard Wagner`, url:`https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/43 The Drink.mp3`, question:`Kiket látunk a színpadon?` },
-  "m1.10": { title:`Hunding (A walkür)`, composer:`Richard Wagner`, url:`https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/46 Hunding.mp3`, question:`Kihez tartozik ez a baljós motívum?` },
-  "m1.11": { title:`Siegmund tavaszi dala (A walkür, 1. felvonás vége)`, composer:`Richard Wagner`, url:`https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/50 Spring Song.mp3`, question:`Kit hallunk?` },
-  "m1.12": { title:`sors-motívum (A walkür)`, composer:`Richard Wagner`, url:`https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/60 Fate.mp3`, question:`Hogy szokták hívni ezt a motívumot?` },
-  "m1.13": { title:`Siegfried motívuma (Siegfried)`, composer:`Richard Wagner`, url:`https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/65 Siegfried.mp3`, question:`Kihez tartozik ez a motívum?` },
-  "m1.14": { title:`Siegfried kovács-dala (Siegfried, 1. felvonás)`, composer:`Richard Wagner`, url:`https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/84 Siegfried's Forging Song II.mp3`, question:`Itt mi történik éppen?` },
-  "m1.15": { title:`Brünhilde ébredése (Siegfried, 3. felvonás vége)`, composer:`Richard Wagner`, url:`https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/91 Revival.mp3`, question:`Itt mi történik éppen?` },
-  "m1.16": { title:`Siegfried-idill`, composer:`Richard Wagner`, url:`https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/94 Immortal Beloved.mp3`, question:`Mi a neve ennek a részletnek és mi történik éppen?` },
-  
-  "m2.1": { title:`3. szimfónia 1. tétel`, composer:`Beethoven`, url:`https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 3. szimfónia 1. tétel.mp3` },
-  "m2.2": { title:`3. szimfónia 2. tétel`, composer:`Beethoven`, url:`https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 3. szimfónia 2. tétel.mp3` },
-  "m2.3": { title:`3. szimfónia 4. tétel`, composer:`Beethoven`, url:`https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 3. szimfónia 4. tétel.mp3` },
-  "m2.4": { title:`5. szimfónia 2. tétel la follia`, composer:`Beethoven`, url:`https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 5. szimfónia 2. tétel la follia.mp3`, question:`Pluszpont szerzési lehetőség: Beethoven itt megidéz egy barokk motívumot.` },
-  "m2.5": { title:`5. szimfónia 3. tétel`, composer:`Beethoven`, url:`https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 5. szimfónia 3. tétel.mp3` },
-  "m2.6": { title:`5. szimfónia 3. és 4. tétel közti átvezető rész`, composer:`Beethoven`, url:`https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 5. szimfónia 3. és 4. tétel közti átvezető rész.mp3` },
-  "m2.7": { title:`6. szimfónia 4. tétel 2. fele`, composer:`Beethoven`, url:`https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 6. szimfónia 4. tétel 2. fele.mp3` },
-  "m2.8": { title:`6. szimfónia 5. tétel`, composer:`Beethoven`, url:`https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 6. szimfónia 5. tétel.mp3` },
-  "m2.9": { title:`7. szimfónia 1. tétel`, composer:`Beethoven`, url:`https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 7. szimfónia 1. tétel.mp3` },
-  "m2.10": { title:`7. szimfónia 3. tétel`, composer:`Beethoven`, url:`https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 7. szimfónia 3. tétel.mp3` },
-  "m2.11": { title:`7. szimfónia 4. tétel`, composer:`Beethoven`, url:`https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 7. szimfónia 4. tétel.mp3` },
-  "m2.12": { title:`8. szimfónia 1. tétel expozíció vége`, composer:`Beethoven`, url:`https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 8. szimfónia 1. tétel expozíció vége.mp3` },
-  "m2.13": { title:`8. szimfónia 2. tétel`, composer:`Beethoven`, url:`https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 8. szimfónia 2. tétel.mp3` },
-  "m2.14": { title:`8. szimfónia 4. tétel`, composer:`Beethoven`, url:`https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 8. szimfónia 4. tétel.mp3` },
-  "m2.15": { title:`9. szimfónia 4. tétel`, composer:`Beethoven`, url:`https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 9. szimfónia 4. tétel.mp3` }
+  // Wagner minigame
+  "m1.1": {
+    title: `Valhalla (A Rajna kincse)`,
+    composer: `Richard Wagner`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner%20minigame/12a%20Valhalla%20(first%20segment)%20_%20Der%20Ring%20Des%20Nibelungen%20[Man7MwIHYSw].mp3`,
+    question: `Melyik helyszínhez tartozik ez a motívum?`
+  },
+  "m1.2": {
+    title: `Wotan dárdája (A Rajna kincse)`,
+    composer: `Richard Wagner`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner%20minigame/13%20Spear%20_%20Der%20Ring%20Des%20Nibelungen.mp3`,
+    question: `Melyik tárgyhoz tartozik ez a motívum és melyik szereplőhöz tartozik a tárgy?`
+  },
+  "m1.3": {
+    title: `óriások (A Rajna kincse)`,
+    composer: `Richard Wagner`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner%20minigame/16%20Giants%20_%20Der%20Ring%20Des%20Nibelungen.mp3`,
+    question: `Melyik szereplőkhöz tartozik ez a motívum?`
+  },
+  "m1.4": {
+    title: `Loge (A Rajna kincse)`,
+    composer: `Richard Wagner`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner%20minigame/21%20Loge%20_%20Der%20Ring%20Des%20Nibelungen.mp3`,
+    question: `Melyik szereplőhöz tartozik ez a motívum?`
+  },
+  "m1.5": {
+    title: `Nibelheim (A Rajna kincse)`,
+    composer: `Richard Wagner`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner%20minigame/24%20Nibelheim%20_%20Der%20Ring%20Des%20Nibelungen.mp3`,
+    question: `Melyik helyszínhez tartozik ez a motívum?`
+  },
+  "m1.6": {
+    title: `Tarnhelm / ködsisak (A Rajna kincse)`,
+    composer: `Richard Wagner`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner%20minigame/25%20Tarnhelm%20_%20Der%20Ring%20Des%20Nibelungen.mp3`,
+    question: `Melyik tárgyhoz tartozik ez a motívum?`
+  },
+  "m1.7": {
+    title: `kard`,
+    composer: `Richard Wagner`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner%20minigame/37%20Sword%20_%20Der%20Ring%20Des%20Nibelungen.mp3`,
+    question: `Melyik tárgyhoz tartozik ez a motívum?`
+  },
+  "m1.8": {
+    title: `vihar (A walkür)`,
+    composer: `Richard Wagner`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner%20minigame/40%20Storm%20_%20Der%20Ring%20Des%20Nibelungen%20[MU4nXZa4y08].mp3`,
+    question: `Itt éppen mi történik?`
+  },
+  "m1.9": {
+    title: `Siegmund és Sieglinde (A walkür)`,
+    composer: `Richard Wagner`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner%20minigame/43%20The%20Drink%20_%20Der%20Ring%20Des%20Nibelungen.mp3`,
+    question: `Kiket látunk a színpadon?`
+  },
+  "m1.10": {
+    title: `Hunding (A walkür)`,
+    composer: `Richard Wagner`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner%20minigame/46%20Hunding%20_%20Der%20Ring%20Des%20Nibelungen.mp3`,
+    question: `Kihez tartozik ez a baljós motívum?`
+  },
+  "m1.11": {
+    title: `Siegmund tavaszi dala (A walkür, 1. felvonás vége)`,
+    composer: `Richard Wagner`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner%20minigame/50%20Spring%20Song%20_%20Der%20Ring%20Des%20Nibelungen.mp3`,
+    question: `Kit hallunk?`
+  },
+  "m1.12": {
+    title: `sors-motívum (A walkür)`,
+    composer: `Richard Wagner`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner%20minigame/60%20Fate%20_%20Der%20Ring%20Des%20Nibelungen%20[eK2LxAJErr0].mp3`,
+    question: `Hogy szokták hívni ezt a motívumot?`
+  },
+  "m1.13": {
+    title: `Siegfried motívuma (Siegfried)`,
+    composer: `Richard Wagner`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner%20minigame/65%20Siegfried%20_%20Der%20Ring%20Des%20Nibelungen.mp3`,
+    question: `Kihez tartozik ez a motívum?`
+  },
+  "m1.14": {
+    title: `Siegfried kovács-dala (Siegfried, 1. felvonás)`,
+    composer: `Richard Wagner`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner%20minigame/84%20Siegfried's%20Forging%20Song%20II%20_%20Der%20Ring%20Des%20Nibelungen.mp3`,
+    question: `Itt mi történik éppen?`
+  },
+  "m1.15": {
+    title: `Brünhilde ébredése (Siegfried, 3. felvonás vége)`,
+    composer: `Richard Wagner`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner%20minigame/91%20Revival%20_%20Der%20Ring%20Des%20Nibelungen.mp3`,
+    question: `Itt mi történik éppen?`
+  },
+  "m1.16": {
+    title: `Siegfried-idill`,
+    composer: `Richard Wagner`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner%20minigame/94%20Immortal%20Beloved%20(Siegfried's%20Idyll)%20_%20Der%20Ring%20Des%20Nibelungen.mp3`,
+    question: `Mi a neve ennek a részletnek és mi történik éppen?`
+  },
+
+  // Beethoven minigame
+  "m2.1": {
+    title: `3. szimfónia 1. tétel`,
+    composer: `Beethoven`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven%203.%20szimfónia%201.%20tétel.mp3`
+  },
+  "m2.2": {
+    title: `3. szimfónia 2. tétel`,
+    composer: `Beethoven`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven%203.%20szimfónia%202.%20tétel.mp3`
+  },
+  "m2.3": {
+    title: `3. szimfónia 4. tétel`,
+    composer: `Beethoven`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven%203.%20szimfónia%204.%20tétel.mp3`
+  },
+  "m2.4": {
+    title: `5. szimfónia 2. tétel la follia`,
+    composer: `Beethoven`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven%205.%20szimfónia%202.%20tétel%20la%20follia.mp3`,
+    question: `Pluszpont szerzési lehetőség: Beethoven itt megidéz egy a barokk zenében népszerű vándormotívumot. Mi ennek a motívumnak a neve? További pluszpontszerzési lehetőség: melyik Britney Spears szám épül ugyanerre az akkordmenetre?`
+  },
+  "m2.5": {
+    title: `5. szimfónia 3. tétel`,
+    composer: `Beethoven`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven%205.%20szimfónia%203.%20tétel.mp3`
+  },
+  "m2.6": {
+    title: `5. szimfónia 3. és 4. tétel közti átvezető rész`,
+    composer: `Beethoven`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven%205.%20szimfónia%203.%20és%204.%20tétel%20közti%20átvezető%20rész.mp3`
+  },
+  "m2.7": {
+    title: `6. szimfónia 4. tétel 2. fele`,
+    composer: `Beethoven`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven%206.%20szimfónia%204.%20tétel%202.%20fele.mp3`
+  },
+  "m2.8": {
+    title: `6. szimfónia 5. tétel`,
+    composer: `Beethoven`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven%206.%20szimfónia%205.%20tétel.mp3`
+  },
+  "m2.9": {
+    title: `7. szimfónia 1. tétel`,
+    composer: `Beethoven`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven%207.%20szimfónia%201.%20tétel.mp3`
+  },
+  "m2.10": {
+    title: `7. szimfónia 3. tétel`,
+    composer: `Beethoven`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven%207.%20szimfónia%203.%20tétel.mp3`
+  },
+  "m2.11": {
+    title: `7. szimfónia 4. tétel`,
+    composer: `Beethoven`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven%207.%20szimfónia%204.%20tétel.mp3`
+  },
+  "m2.12": {
+    title: `8. szimfónia 1. tétel expozíció vége`,
+    composer: `Beethoven`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven%208.%20szimfónia%201.%20tétel%20expozíció%20vége.mp3`
+  },
+  "m2.13": {
+    title: `8. szimfónia 2. tétel`,
+    composer: `Beethoven`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven%208.%20szimfónia%202.%20tétel.mp3`
+  },
+  "m2.14": {
+    title: `8. szimfónia 4. tétel`,
+    composer: `Beethoven`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven%208.%20szimfónia%204.%20tétel.mp3`
+  },
+  "m2.15": {
+    title: `9. szimfónia 4. tétel`,
+    composer: `Beethoven`,
+    url: `https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven%209.%20szimfónia%204.%20tétel.mp3`
+  }
 };
 
 /* -------------------- DOM References -------------------- */
