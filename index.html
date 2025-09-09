@@ -475,10 +475,10 @@ function playNextInMini(){
     hint.textContent = defaultText;
   }
 
-  audio.play().then(()=>{ playBtn.textContent="Pause"; })
-    .catch(()=>{
-      playBtn.textContent="Play"; 
-      hint.textContent="Érintsd a lejátszás gombot, hogy elinduljon a hang.";
+ // Do not autoplay; just reset button and hint
+playBtn.textContent = "Play";
+hint.textContent += " Érintsd a Play gombot, hogy elinduljon a hang.";
+  
     });
 }
 
