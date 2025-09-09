@@ -20,7 +20,7 @@
 <h2>Tippelj! Ha a zeneszerzőt és a darabot is eltalálod, az 2 pontot ér, ha csak az egyiket, az egyet.</h2>
 
 <div id="screen1" class="screen">
-  <div id="playingInfo" class="center"></div>
+  <div id="playingInfo" class="center">Zene lejátszása...</div>
   <div id="progress"><div id="progFill"></div></div>
   <div class="center">
     <button id="playBtn">Play</button>
@@ -58,14 +58,11 @@ const tracks = {
 };
 
 const minigames = {
-  /* mini1: Wagner vezérmotívumok minigame */
-    
   "mini1": {
     tracks: ["m1.1","m1.2","m1.3","m1.4","m1.5","m1.6","m1.7","m1.8","m1.9","m1.10","m1.11","m1.12","m1.13","m1.14","m1.15","m1.16"],
-    limit: 5 // ciklusok maximális limitje
+    limit: 5  // maximum SCREEN1→SCREEN3 cycles
   }
 };
-
 
 const extraTracks = {
   "m1.1": {title:"Valhalla (A Rajna kincse)", composer:"Richard Wagner", url:"https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/12a Valhalla (first segment) _ Der Ring Des Nibelungen [Man7MwIHYSw].mp3"},
@@ -80,7 +77,7 @@ const extraTracks = {
   "m1.10": {title:"Hunding (A walkür)", composer:"Richard Wagner", url:"https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/46 Hunding _ Der Ring Des Nibelungen.mp3"},
   "m1.11": {title:"Siegmund tavaszi dala (A walkür, 1. felvonás vége)", composer:"Richard Wagner", url:"https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/50 Spring Song _ Der Ring Des Nibelungen.mp3"},
   "m1.12": {title:"sors-motívum (A walkür)", composer:"Richard Wagner", url:"https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/60 Fate _ Der Ring Des Nibelungen [eK2LxAJErr0].mp3"},
-   "m1.13": {title:"Siegfried motívuma (Siegfried)", composer:"Richard Wagner", url:"https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/65 Siegfried _ Der Ring Des Nibelungen.mp3"},
+  "m1.13": {title:"Siegfried motívuma (Siegfried)", composer:"Richard Wagner", url:"https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/65 Siegfried _ Der Ring Des Nibelungen.mp3"},
   "m1.14": {title:"Siegfried kovács-dala  (Siegfried, 1. felvonás)", composer:"Richard Wagner", url:"https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/84 Siegfried's Forging Song II _ Der Ring Des Nibelungen.mp3"},
   "m1.15": {title:"Brünhilde ébredése (Siegfried, 3. felvonás vége)", composer:"Richard Wagner", url:"https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/91 Revival _ Der Ring Des Nibelungen.mp3"},
   "m1.16": {title:"Siegfried-idill", composer:"Richard Wagner", url:"https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner minigame/94 Immortal Beloved (Siegfried's Idyll) _ Der Ring Des Nibelungen.mp3"},
@@ -111,14 +108,9 @@ let currentTrack = null;
 let currentMinigame = null;     
 let minigameQueue = [];         
 let lastPlayedInMini = null;
-let miniCycles = 0 // ciklusszámláló a minigame-ben;
+let miniCycles = 0;  // counts SCREEN1→SCREEN3 cycles
 
 /* -------------------- Utility Functions -------------------- */
-
-/**
- * Show the given screen and hide all others.
- * @param {HTMLElement} el - The screen element to show
- */
 function showScreen(el){
   screen1.classList.remove('visible');
   screen2.classList.remove('visible');
@@ -126,27 +118,17 @@ function showScreen(el){
   el.classList.add('visible');
 }
 
-/**
- * Get URL query parameter by name.
- * @param {string} name - Parameter name
- * @returns {string|null} - Parameter value or null if not found
- */
 function param(name){
   const u = new URL(location.href);
   return u.searchParams.get(name);
 }
 
-/**
- * Load a track by its ID into SCREEN1.
- * Updates audio source, track info, progress bar, and shows mini-game button if available.
- * @param {string} id - Track ID
- */
 function loadTrackById(id){
   let meta = tracks[id] || extraTracks[id];
   if(!meta){ console.warn('Unknown track',id); return; }
   currentTrack = id;
   audio.src = meta.url;
-  playingInfo.textContent = "¯\_(ツ)_/¯";
+  playingInfo.textContent = "Zene lejátszása...";
   playBtn.textContent = "Play";
   progFill.style.width = '0%';
   hint.textContent = "";
@@ -163,10 +145,6 @@ function loadTrackById(id){
   }
 }
 
-/**
- * Shuffle an array in-place using Fisher-Yates algorithm.
- * @param {Array} a - Array to shuffle
- */
 function shuffleArray(a){
   for(let i=a.length-1;i>0;i--){
     const j = Math.floor(Math.random()*(i+1));
@@ -175,28 +153,20 @@ function shuffleArray(a){
 }
 
 /* -------------------- Event Listeners -------------------- */
-
-/**
- * Play/Stop button handler.
- * Toggles playback of current audio track.
- */
 playBtn.addEventListener('click', async ()=>{
   if(audio.paused){
-    try {
+    try{
       await audio.play();
-      playBtn.textContent = "Pause";   // change Stop → Pause
-    } catch(e) {
+      playBtn.textContent = "Pause";
+    }catch(e){
       hint.textContent = "A böngésző megakadályozta az automatikus lejátszást. Kérjük, érints a lejátszó gombot újra.";
     }
   } else {
     audio.pause();
-    playBtn.textContent = "Play";      // Play when paused
+    playBtn.textContent = "Play";
   }
 });
 
-/**
- * Update progress bar as audio plays.
- */
 audio.addEventListener('timeupdate', ()=>{
   if(audio.duration){
     const pct = Math.floor(100 * audio.currentTime / audio.duration);
@@ -204,15 +174,8 @@ audio.addEventListener('timeupdate', ()=>{
   }
 });
 
-/**
- * Reset play button when audio ends.
- */
 audio.addEventListener('ended', ()=>{ playBtn.textContent = "Play"; });
 
-/**
- * ANSWER button handler.
- * Stops audio and shows SCREEN2 (regular track) or SCREEN3 (mini-game).
- */
 answerBtn.addEventListener('click', ()=>{
   audio.pause();
   playBtn.textContent = "Play";
@@ -228,80 +191,58 @@ answerBtn.addEventListener('click', ()=>{
   }
 });
 
-/**
- * BACK link handler: return from SCREEN2 to SCREEN1.
- */
 backToPlay.addEventListener('click', (e)=>{
   e.preventDefault();
   showScreen(screen1);
 });
 
 /* -------------------- Mini-game Functions -------------------- */
-
-/**
- * Start a mini-game.
- * Shuffles the mini-game tracks and starts the first one.
- * @param {string} miniName - Mini-game name (key in minigames)
- */
 function startMiniGame(miniName){
-  currentMinigame = miniName;
-  miniCycles = 0;  // reset counter
-
   const mg = minigames[miniName];
-  if(!mg) return;
+  if(!mg || !mg.tracks || mg.tracks.length === 0) return;
 
+  currentMinigame = miniName;
+  miniCycles = 0;                 
   shuffleArray(mg.tracks);
   minigameQueue = mg.tracks.slice();
 
-  miniCycles = 0; // reset cycle counter
-   // Update hint to include the limit
+  // dynamic hint including limit
   hint.textContent = `Ha helyesen válaszolsz, kapsz 1 pontot és továbbléphetsz a következő kérdésre. Maximum ${mg.limit} kört játszhatsz.`;
-  
+
   playNextInMini();
 }
 
-/**
- * Play next track in current mini-game.
- * Updates SCREEN1 and plays audio automatically if possible.
- */
 function playNextInMini(){
   const mg = minigames[currentMinigame];
-  
-  // Stop if cycle limit reached
+
   if(miniCycles >= (mg?.limit || Infinity) || minigameQueue.length === 0){
     currentMinigame = null;
+    hint.textContent = "";
     showScreen(screen2);
     return;
   }
 
   const id = minigameQueue.shift();
   lastPlayedInMini = id;
-  miniCycles++;  // increment cycle counter
+  miniCycles++;
 
   const meta = extraTracks[id];
   audio.src = meta.url;
   playingInfo.textContent = "Zene lejátszása...";
   progFill.style.width = '0%';
   showScreen(screen1);
-  
+
   audio.play().then(()=>{ playBtn.textContent="Pause"; })
-    .catch(()=>{ 
+    .catch(()=>{
       playBtn.textContent="Play"; 
       hint.textContent="Érintsd a lejátszás gombot, hogy elinduljon a hang.";
     });
 }
 
-/**
- * NEXT button in SCREEN3: play next mini-game track.
- */
 nextMiniBtn.addEventListener('click', ()=>{
   playNextInMini();
 });
 
-/**
- * EXIT button in SCREEN3: exit mini-game.
- * Returns to SCREEN2 for parent track.
- */
 exitMiniBtn.addEventListener('click', ()=>{
   currentMinigame = null;
   minigameQueue = [];
@@ -312,65 +253,41 @@ exitMiniBtn.addEventListener('click', ()=>{
   } else showScreen(screen1);
 });
 
-// Interactive progress bar
+/* -------------------- Progress Bar Interaction -------------------- */
 const progress = document.getElementById('progress');
 let isDragging = false;
 
-audio.addEventListener('loadedmetadata', ()=>{
-  // Ensure duration is known
-  if(audio.duration){
-    progFill.style.width = (audio.currentTime / audio.duration * 100) + '%';
-  }
-});
-
-audio.addEventListener('timeupdate', ()=>{
-  if(!isDragging && audio.duration){
-    progFill.style.width = (audio.currentTime / audio.duration * 100) + '%';
-  }
-});
-
-// Click to jump
 progress.addEventListener('click', (e)=>{
-  if(!audio.duration) return;
   const rect = progress.getBoundingClientRect();
-  let pct = (e.clientX - rect.left)/rect.width;
-  pct = Math.max(0, Math.min(1, pct));
-  audio.currentTime = pct*audio.duration;
+  const pct = (e.clientX - rect.left) / rect.width;
+  audio.currentTime = pct * audio.duration;
 });
 
-// Drag with mouse
-progress.addEventListener('mousedown', ()=>{ isDragging = true; });
-document.addEventListener('mouseup', ()=>{ isDragging = false; });
+progress.addEventListener('mousedown', ()=>{ isDragging=true; });
+document.addEventListener('mouseup', ()=>{ isDragging=false; });
 document.addEventListener('mousemove', (e)=>{
   if(isDragging && audio.duration){
     const rect = progress.getBoundingClientRect();
-    let pct = (e.clientX - rect.left)/rect.width;
-    pct = Math.max(0, Math.min(1, pct));
-    audio.currentTime = pct*audio.duration;
+    let x = e.clientX - rect.left;
+    x = Math.max(0, Math.min(x, rect.width));
+    audio.currentTime = (x / rect.width) * audio.duration;
   }
 });
 
-// Touch for mobile
-progress.addEventListener('touchstart', ()=>{ isDragging = true; });
-progress.addEventListener('touchend', ()=>{ isDragging = false; });
+progress.addEventListener('touchstart', ()=>{ isDragging=true; });
+progress.addEventListener('touchend', ()=>{ isDragging=false; });
 progress.addEventListener('touchmove', (e)=>{
   if(isDragging && audio.duration){
     const touch = e.touches[0];
     const rect = progress.getBoundingClientRect();
-    let pct = (touch.clientX - rect.left)/rect.width;
-    pct = Math.max(0, Math.min(1, pct));
-    audio.currentTime = pct*audio.duration;
+    let x = touch.clientX - rect.left;
+    x = Math.max(0, Math.min(x, rect.width));
+    audio.currentTime = (x / rect.width) * audio.duration;
     e.preventDefault();
   }
 });
-  
-/* -------------------- Initialization -------------------- */
 
-/**
- * On page load:
- * - Check if ?track=ID is provided in URL
- * - Load track if valid, otherwise show landing message
- */
+/* -------------------- Initialization -------------------- */
 (function init(){
   const t = param('track');
   if(t && (tracks[t] || extraTracks[t])){
