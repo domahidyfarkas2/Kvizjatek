@@ -254,6 +254,9 @@ function startMiniGame(miniName){
   minigameQueue = mg.tracks.slice();
 
   miniCycles = 0; // reset cycle counter
+   // Update hint to include the limit
+  hint.textContent = `Ha helyesen válaszolsz, kapsz 1 pontot és továbbléphetsz a következő kérdésre. Maximum ${mg.limit} kört játszhatsz.`;
+  
   playNextInMini();
 }
 
