@@ -109,6 +109,7 @@ let currentTrack = null;
 let currentMinigame = null;     
 let minigameQueue = [];         
 let lastPlayedInMini = null;
+let miniCycles = 0 // ciklusszámláló a minigame-ben
 
 /* -------------------- Utility Functions -------------------- */
 
@@ -242,9 +243,15 @@ backToPlay.addEventListener('click', (e)=>{
  */
 function startMiniGame(miniName){
   currentMinigame = miniName;
-  const pool = (minigames[miniName] || []).slice();
-  shuffleArray(pool);
-  minigameQueue = pool.slice();
+  miniCycles = 0;  // reset counter
+
+  const mg = minigames[miniName];
+  if(!mg) return;
+
+  shuffleArray(mg.tracks);
+  minigameQueue = mg.tracks.slice();
+
+  miniCycles = 0; // reset cycle counter
   playNextInMini();
 }
 
@@ -253,22 +260,30 @@ function startMiniGame(miniName){
  * Updates SCREEN1 and plays audio automatically if possible.
  */
 function playNextInMini(){
-  if(minigameQueue.length === 0){
+  const mg = minigames[currentMinigame];
+  
+  // Stop if cycle limit reached
+  if(miniCycles >= (mg?.limit || Infinity) || minigameQueue.length === 0){
     currentMinigame = null;
     showScreen(screen2);
     return;
   }
+
   const id = minigameQueue.shift();
   lastPlayedInMini = id;
+  miniCycles++;  // increment cycle counter
+
   const meta = extraTracks[id];
   audio.src = meta.url;
-  playingInfo.textContent = "¯\_(ツ)_/¯";
+  playingInfo.textContent = "Zene lejátszása...";
   progFill.style.width = '0%';
   showScreen(screen1);
-  audio.play().then(()=>{ playBtn.textContent="Stop"; }).catch(()=>{
-    playBtn.textContent="Play"; 
-    hint.textContent="Érintsd a lejátszás gombot, hogy elinduljon a hang.";
-  });
+  
+  audio.play().then(()=>{ playBtn.textContent="Pause"; })
+    .catch(()=>{ 
+      playBtn.textContent="Play"; 
+      hint.textContent="Érintsd a lejátszás gombot, hogy elinduljon a hang.";
+    });
 }
 
 /**
