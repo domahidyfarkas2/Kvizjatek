@@ -176,16 +176,15 @@ function shuffleArray(a){
  */
 playBtn.addEventListener('click', async ()=>{
   if(audio.paused){
-    try{
+    try {
       await audio.play();
-      playBtn.textContent = "Stop";
-    }catch(e){
+      playBtn.textContent = "Pause";   // change Stop → Pause
+    } catch(e) {
       hint.textContent = "A böngésző megakadályozta az automatikus lejátszást. Kérjük, érints a lejátszó gombot újra.";
     }
   } else {
     audio.pause();
-    audio.currentTime = 0;
-    playBtn.textContent = "Play";
+    playBtn.textContent = "Play";      // Play when paused
   }
 });
 
