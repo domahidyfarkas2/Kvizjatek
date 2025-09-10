@@ -53,116 +53,640 @@ Tippelj! Ha a zeneszerzőt és a darabot is eltalálod, az 2 pontot ér, ha csak
 <script>
 /* -------------------- CONFIG -------------------- */
 const tracks = {
-  "track001": {
-  title: "Masques",
-  composer: "Debussy",
-  url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Debussy - Masques.mp3"
-},
-"track002": {
-  title: "Bagatelle sans tonalité",
-  composer: "Liszt",
-  url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Franz Liszt - Bagatelle sans tonalité, S.216a (Gardon).mp3"
-},
-"track003": {
-  title: "C-moll fantázia",
-  composer: "Mozart",
-  url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wolfgang Amadeus Mozart - Fantasia No. 4 in C Minor, K. 475 [Complete] (Piano Solo).mp3"
-},
-"track004": {
-  title: "A Walkürök lovaglása",
-  composer: "Wagner",
-  url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Wagner a walkürök lovaglása.mp3",
-  minigame: "mini1"
-},
-"track005": {
-  title: "5. szimfónia 1. tétel",
-  composer: "Beethoven",
-  url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 5. szimfónia 1. tétel.mp3",
-  minigame: "mini2"
-},
-"track006": {
-  title: "7. szimfónia 2. tétel",
-  composer: "Beethoven",
-  url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 7. szimfónia 2. tétel.mp3",
-  minigame: "mini2"
-},
-"track007": {
-  title: "9. szimfónia 2. tétel",
-  composer: "Beethoven",
-  url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven 9. szimfónia 2. tétel.mp3",
-  minigame: "mini2"
-},
-"track008": {
-  title: "Egmont nyitány vége",
-  composer: "Beethoven",
-  url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven Egmont nyitány vége.mp3",
-  minigame: "mini2"
-},
-"track009": {
-  title: "Holdfény szonáta 1. tétel",
-  composer: "Beethoven",
-  url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven Holdfény szonáta 1. tétel.mp3"
-},
-"track010": {
-  title: "Holdfény szonáta 3. tétel",
-  composer: "Beethoven",
-  url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven Holdfény szonáta 3. tétel.mp3"
-},
-"track011": {
-  title: "Pathetique szonáta 1. tétel",
-  composer: "Beethoven",
-  url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven Pathetique szonáta 1. tétel.mp3"
-},
-"track012": {
-  title: "Hegedűverseny 3. tétel",
-  composer: "Beethoven",
-  url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven hegedűverseny 3. tétel.mp3"
-},
-  "track013": {
-  title: "1. szimfónia 1. tétel eleje",
-  composer: "Mahler",
-  url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Mahler 1. szimfónia 1. tétel eleje.mp3",
-  minigame: "mini3"
-},
-"track014": {
-  title: "5. szimfónia 1. tétel ",
-  composer: "Mahler",
-  url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Mahler 5. szimfónia 1. tétel .mp3",
-  minigame: "mini3"
-},
-"track015": {
-  title: "5. szimfónia 4. tétel",
-  composer: "Mahler",
-  url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Mahler 5. szimfónia 4. tétel.mp3",
-  minigame: "mini3"
-}
-};
-
-const minigames = {
-  // Wagner leitmotif minigame
-  "mini1": {
-    tracks: [
-      "m1.1","m1.2","m1.3","m1.4","m1.5","m1.6","m1.7","m1.8",
-      "m1.9","m1.10","m1.11","m1.12","m1.13","m1.14","m1.15","m1.16"
-    ],
-    limit: 5  // maximum SCREEN1→SCREEN3 cycles
+  track001: {
+    composer: "Bach",
+    title: "Air",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Bach%20Air.mp3"
   },
-
-  // Beethoven symphonies minigame
-  "mini2": {
-    tracks: [
-      "m2.1","m2.2","m2.3","m2.4","m2.5","m2.6","m2.7","m2.8",
-      "m2.9","m2.10","m2.11","m2.12","m2.13","m2.14","m2.15"
-    ],
-    limit: 4  // maximum SCREEN1→SCREEN3 cycles
+  track002: {
+    composer: "Bach",
+    title: "Máté passió (Erbarme dich, mein Gott)",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Bach%20Máté%20passió%20(Erbarme%20dich,%20mein%20Gott).mp3"
   },
-  // Mahler szimfóniák minigame
-  "mini3": {
-    tracks: [
-      "m3.1","m3.2","m3.3","m3.4","m3.5","m3.6","m3.7","m3.8",
-      "m3.9","m3.10","m3.11","m3.12","m3.13","m3.14","m3.15","m3.16","m3.17","m3.18"
-    ],
-    limit: 3  // maximum SCREEN1→SCREEN3 cycles
+  track003: {
+    composer: "Balakirev",
+    title: "Tamara",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Balakirev%20Tamara.mp3"
+  },
+  track004: {
+    composer: "Bartók",
+    title: "- A csodálatos mandarin",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Bartók%20-%20A%20csodálatos%20mandarin.mp3"
+  },
+  track005: {
+    composer: "Bartók",
+    title: "- Concerto 5. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Bartók%20-%20Concerto%205.%20tétel.mp3"
+  },
+  track006: {
+    composer: "Bartók",
+    title: "A kékszakállú herceg vára (4. ajtó)",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Bartók%20A%20kékszakállú%20herceg%20vára%20(4.%20ajtó).mp3"
+  },
+  track007: {
+    composer: "Bartók",
+    title: "A kékszakállú herceg vára (6. ajtó)",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Bartók%20A%20kékszakállú%20herceg%20vára%20(6.%20ajtó).mp3"
+  },
+  track008: {
+    composer: "Bartók",
+    title: "Zene húros hangszerekre, ütőkre, és cselesztára 3. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Bartók%20Zene%20húros%20hangszerekre,%20ütőkre,%20és%20cselesztára%203.%20tétel.mp3"
+  },
+  track009: {
+    composer: "Beethoven",
+    title: "Leonore nyitány",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven%20Leonore%20nyitány.mp3"
+  },
+  track010: {
+    composer: "Beethoven",
+    title: "Kreutzer szonáta",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Beethoven%20Kreutzer%20szonáta.mp3"
+  },
+  track011: {
+    composer: "Berg",
+    title: "Altenberg dalok",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Berg%20Altenberg%20dalok.mp3"
+  },
+  track012: {
+    composer: "Berlioz",
+    title: "- Fantasztikus szimfónia, 2. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Berlioz%20-%20Fantasztikus%20szimfónia,%202.%20tétel.mp3"
+  },
+  track013: {
+    composer: "Berlioz",
+    title: "- Fantasztikus szimfónia, 4. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Berlioz%20-%20Fantasztikus%20szimfónia,%204.%20tétel.mp3"
+  },
+  track014: {
+    composer: "Borogyin",
+    title: "Poloveci táncok az Igor Herceg c. operából",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Borogyin%20Poloveci%20táncok%20az%20Igor%20Herceg%20c.%20operából.mp3"
+  },
+  track015: {
+    composer: "Brahms",
+    title: "1. szimfónia 1. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Brahms%201.%20szimfónia%201.%20tétel.mp3"
+  },
+  track016: {
+    composer: "Brahms",
+    title: "2. szimfónia 1. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Brahms%202.%20szimfónia%201.%20tétel.mp3"
+  },
+  track017: {
+    composer: "Brahms",
+    title: "3. szimfónia 3. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Brahms%203.%20szimfónia%203.%20tétel.mp3"
+  },
+  track018: {
+    composer: "Brahms",
+    title: "4. szimfónia 1. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Brahms%204.%20szimfónia%201.%20tétel.mp3"
+  },
+  track019: {
+    composer: "Brahms",
+    title: "Hegedűverseny, 1. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Brahms%20Hegedűverseny,%201.%20tétel.mp3"
+  },
+  track020: {
+    composer: "Brahms",
+    title: "Kürt-trió, 1. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Brahms%20Kürt-trió,%201.%20tétel.mp3"
+  },
+  track021: {
+    composer: "Brahms",
+    title: "Német requiem, 2. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Brahms%20Német%20requiem,%202.%20tétel.mp3"
+  },
+  track022: {
+    composer: "Brahms",
+    title: "Tragikus nyitány",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Brahms%20Tragikus%20nyitány.mp3"
+  },
+  track023: {
+    composer: "Bruckner",
+    title: "4. szimfónia 4. tétel, finálé",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Bruckner%204.%20szimfónia%204.%20tétel,%20finálé.mp3"
+  },
+  track024: {
+    composer: "Bruckner",
+    title: "9. szimfónia 1. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Bruckner%209.%20szimfónia%201.%20tétel.mp3"
+  },
+  track025: {
+    composer: "Carl",
+    title: "Orff Carmina Burana (In taberna)",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Carl%20Orff%20Carmina%20Burana%20(In%20taberna).mp3"
+  },
+  track026: {
+    composer: "Cherubini",
+    title: "Requiem - Agnus Dei",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Cherubini%20Requiem%20-%20Agnus%20Dei.mp3"
+  },
+  track027: {
+    composer: "Chopin",
+    title: "E-moll zongoraverseny 1. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Chopin%20E-moll%20zongoraverseny%201.%20tétel.mp3"
+  },
+  track028: {
+    composer: "Chopin",
+    title: "E-moll zongoraverseny 2. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Chopin%20E-moll%20zongoraverseny%202.%20tétel.mp3"
+  },
+  track029: {
+    composer: "Chopin",
+    title: "Fantaisie Impromptu",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Chopin%20Fantaisie%20Impromptu.mp3"
+  },
+  track030: {
+    composer: "Csajkovszkij",
+    title: "Hattyúk tava",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Csajkovszkij%20Hattyúk%20tava.mp3"
+  },
+  track031: {
+    composer: "Csajkovszkij",
+    title: "6. (Patetikus) szimfónia, 1. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Csajkovszkij%206.%20(Patetikus)%20szimfónia,%201.%20tétel.mp3"
+  },
+  track032: {
+    composer: "Csajkovszkij",
+    title: "Az évszakok - Június",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Csajkovszkij%20Az%20évszakok%20-%20Június.mp3"
+  },
+  track033: {
+    composer: "Csajkovszkij",
+    title: "Rómeó és Júlia nyitányfantázia",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Csajkovszkij%20Rómeó%20és%20Júlia%20nyitányfantázia.mp3"
+  },
+  track034: {
+    composer: "Debussy",
+    title: "A faun délutánja",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Debussy%20A%20faun%20délutánja.mp3"
+  },
+  track035: {
+    composer: "Debussy",
+    title: "A tenger, 3.tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Debussy%20A%20tenger,%203.tétel.mp3"
+  },
+  track036: {
+    composer: "Debussy",
+    title: "Nocturnes, 1. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Debussy%20Nocturnes,%201.%20tétel.mp3"
+  },
+  track037: {
+    composer: "Delius",
+    title: "In a Summer Garden",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Delius%20In%20a%20Summer%20Garden.mp3"
+  },
+  track038: {
+    composer: "Dohnányi",
+    title: "Szimfonikus percek 4. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Dohnányi%20Szimfonikus%20percek%204.%20tétel.mp3"
+  },
+  track039: {
+    composer: "Dvorak",
+    title: "8. szimfónia 4. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Dvorak%208.%20szimfónia%204.%20tétel.mp3"
+  },
+  track040: {
+    composer: "Dvorak",
+    title: "D-moll zongoraverseny",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Dvorak%20D-moll%20zongoraverseny.mp3"
+  },
+  track041: {
+    composer: "Dvorak",
+    title: "Karneváli nyitány",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Dvorak%20Karneváli%20nyitány.mp3"
+  },
+  track042: {
+    composer: "Dvorák",
+    title: "9. (Új Világ) szimfónia 2. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Dvorák%209.%20(Új%20Világ)%20szimfónia%202.%20tétel.mp3"
+  },
+  track043: {
+    composer: "Dvorák",
+    title: "9. (Új Világ) szimfónia 4. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Dvorák%209.%20(Új%20Világ)%20szimfónia%204.%20tétel.mp3"
+  },
+  track044: {
+    composer: "Elgar",
+    title: "Enigma variációk",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Elgar%20Enigma%20variációk.mp3"
+  },
+  track045: {
+    composer: "Erkel",
+    title: "Hunyadi László - nyitány",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Erkel%20Hunyadi%20László%20-%20nyitány.mp3"
+  },
+  track046: {
+    composer: "Fauré",
+    title: "Pelléas és Mélisande szvit (Sicilienne)",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Fauré%20Pelléas%20és%20Mélisande%20szvit%20(Sicilienne).mp3"
+  },
+  track047: {
+    composer: "Franck",
+    title: "Hegedűszonáta, 1. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Franck%20Hegedűszonáta,%201.%20tétel.mp3"
+  },
+  track048: {
+    composer: "Gershwin",
+    title: "F-dúr zongoraverseny",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Gershwin%20F-dúr%20zongoraverseny.mp3"
+  },
+  track049: {
+    composer: "Gershwin",
+    title: "Rhapsody In Blue",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Gershwin%20Rhapsody%20In%20Blue.mp3"
+  },
+  track050: {
+    composer: "Grieg",
+    title: "A-moll zongoraverseny, 3. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Grieg%20A-moll%20zongoraverseny,%203.%20tétel.mp3"
+  },
+  track051: {
+    composer: "Hacsaturján",
+    title: "Csellóverseny, 3. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Hacsaturján%20Csellóverseny,%203.%20tétel.mp3"
+  },
+  track052: {
+    composer: "Hacsaturján",
+    title: "D-dúr Hegedűverseny",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Hacsaturján%20D-dúr%20Hegedűverseny.mp3"
+  },
+  track053: {
+    composer: "Handel",
+    title: "Koronázási himnusz (Zadok the Priest)",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Handel%20Koronázási%20himnusz%20(Zadok%20the%20Priest).mp3"
+  },
+  track054: {
+    composer: "Holst",
+    title: "A bolygók - Szaturnusz",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Holst%20A%20bolygók%20-%20Szaturnusz.mp3"
+  },
+  track055: {
+    composer: "Honegger",
+    title: "Karácsonyi kantáta",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Honegger%20Karácsonyi%20kantáta.mp3"
+  },
+  track056: {
+    composer: "Ippolitov-Ivanov",
+    title: "Kaukázusi képek",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Ippolitov-Ivanov%20Kaukázusi%20képek.mp3"
+  },
+  track057: {
+    composer: "Kodály",
+    title: "Fölszállott a páva (variációk egy magyar népdalra)",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Kodály%20Fölszállott%20a%20páva%20(variációk%20egy%20magyar%20népdalra).mp3"
+  },
+  track058: {
+    composer: "Kodály",
+    title: "Háry János",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Kodály%20Háry%20János.mp3"
+  },
+  track059: {
+    composer: "Kodály",
+    title: "Psalmus Hungaricus",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Kodály%20Psalmus%20Hungaricus.mp3"
+  },
+  track060: {
+    composer: "Ligeti",
+    title: "Musica Ricercata, 7. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Ligeti%20Musica%20Ricercata,%207.%20tétel.mp3"
+  },
+  track061: {
+    composer: "Ligeti",
+    title: "Requiem (Kyrie)",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Ligeti%20Requiem%20(Kyrie).mp3"
+  },
+  track062: {
+    composer: "Liszt",
+    title: "1. Mefisztó keringő",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Liszt%201.%20Mefisztó%20keringő.mp3"
+  },
+  track063: {
+    composer: "Liszt",
+    title: "Funérailles",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Liszt%20Funérailles.mp3"
+  },
+  track064: {
+    composer: "Liszt",
+    title: "Les préludes",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Liszt%20Les%20préludes.mp3"
+  },
+  track065: {
+    composer: "Liszt",
+    title: "H-moll zongorazsonáta",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Liszt%20H-moll%20zongorazsonáta.mp3"
+  },
+  track066: {
+    composer: "Mahler",
+    title: "1. szimfónia 1. tétel eleje",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Mahler%201.%20szimfónia%201.%20tétel%20eleje.mp3"
+  },
+  track067: {
+    composer: "Mascagni",
+    title: "Parasztbecsület",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Mascagni%20Parasztbecsület.mp3"
+  },
+  track068: {
+    composer: "Mendelssohn",
+    title: "Szentivánéji álom",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Mendelssohn%20Szentivánéji%20álom.mp3"
+  },
+  track069: {
+    composer: "Mozart",
+    title: "25., (kis) G-moll szinfónia",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Mozart%2025.,%20(kis)%20G-moll%20szinfónia.mp3"
+  },
+  track070: {
+    composer: "Mozart",
+    title: "A-dúr zongoraszonáta",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Mozart%20A-dúr%20zongoraszonáta.mp3"
+  },
+  track071: {
+    composer: "Mozart",
+    title: "D-moll zongoraverseny, 1. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Mozart%20D-moll%20zongoraverseny,%201.%20tétel.mp3"
+  },
+  track072: {
+    composer: "Mozart",
+    title: "23., A-moll zongoraverseny, 2. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Mozart%2023.,%20A-moll%20zongoraverseny,%202.%20tétel.mp3"
+  },
+  track073: {
+    composer: "Mozart",
+    title: "40. (nagy) G-moll szimfónia",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Mozart%2040.%20(nagy)%20G-moll%20szimfónia.mp3"
+  },
+  track074: {
+    composer: "Mozart",
+    title: "Don Giovanni finálé",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Mozart%20Don%20Giovanni%20finálé.mp3"
+  },
+  track075: {
+    composer: "Mozart",
+    title: "Requiem (Confutatis)",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Mozart%20Requiem%20(Confutatis).mp3"
+  },
+  track076: {
+    composer: "Mozart",
+    title: "klarinétverseny, 2. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Mozart%20klarinétverseny,%202.%20tétel.mp3"
+  },
+  track077: {
+    composer: "Muszorgszkij",
+    title: "Borisz Godunov, koronázási jelenet",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Muszorgszkij%20Borisz%20Godunov,%20koronázási%20jelenet.mp3"
+  },
+  track078: {
+    composer: "Muszorgszkij",
+    title: "Egy kiállítás képei (Baba-Jaga kunyhója)",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Muszorgszkij%20Egy%20kiállítás%20képei%20(Baba-Jaga%20kunyhója).mp3"
+  },
+  track079: {
+    composer: "Muszorgszkij",
+    title: "Egy kiállítás képei (Ódon várkastély)",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Muszorgszkij%20Egy%20kiállítás%20képei%20(Ódon%20várkastély).mp3"
+  },
+  track080: {
+    composer: "Muszorgszkij",
+    title: "Éj a kopár hegyen",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Muszorgszkij%20Éj%20a%20kopár%20hegyen.mp3"
+  },
+  track081: {
+    composer: "Philip",
+    title: "Glass Hegedűverseny, 3. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Philip%20Glass%20Hegedűverseny,%203.%20tétel.mp3"
+  },
+  track082: {
+    composer: "Poulenc",
+    title: "Zongoraverseny, 1. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Poulenc%20Zongoraverseny,%201.%20tétel.mp3"
+  },
+  track083: {
+    composer: "Prokofjev",
+    title: "5. szimfónia 4. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Prokofjev%205.%20szimfónia%204.%20tétel.mp3"
+  },
+  track084: {
+    composer: "Prokofjev",
+    title: "Szkíta szvit",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Prokofjev%20Szkíta%20szvit.mp3"
+  },
+  track085: {
+    composer: "Prokofjev",
+    title: "1. (Klasszikus) szimfónia, 1. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Prokofjev%201.%20(Klasszikus)%20szimfónia,%201.%20tétel.mp3"
+  },
+  track086: {
+    composer: "Puccini",
+    title: "Gianni Schicchi",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Puccini%20Gianni%20Schicchi.mp3"
+  },
+  track087: {
+    composer: "Rachmaninov",
+    title: "2. szimfónia, 3. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Rachmaninov%202.%20szimfónia,%203.%20tétel.mp3"
+  },
+  track088: {
+    composer: "Rahmanyinov",
+    title: "2., C-moll zongoraverseny, 2. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Rahmanyinov%202.,%20C-moll%20zongoraverseny,%202.%20tétel.mp3"
+  },
+  track089: {
+    composer: "Rahmanyinov",
+    title: "Rapszódia egy Paganini-témára",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Rahmanyinov%20Rapszódia%20egy%20Paganini-témára.mp3"
+  },
+  track090: {
+    composer: "Ravel",
+    title: "Couperin sírja szvit - Forlane",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Ravel%20Couperin%20sírja%20szvit%20-%20Forlane.mp3"
+  },
+  track091: {
+    composer: "Ravel",
+    title: "Bolero",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Ravel%20Bolero.mp3"
+  },
+  track092: {
+    composer: "Ravel",
+    title: "F-dúr vonósnégyes, 2. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Ravel%20F-dúr%20vonósnégyes,%202.%20tétel.mp3"
+  },
+  track093: {
+    composer: "Ravel",
+    title: "G-dúr zongoraverseny 2. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Ravel%20G-dúr%20zongoraverseny%202.%20tétel.mp3"
+  },
+  track094: {
+    composer: "Ravel",
+    title: "La Valse",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Ravel%20La%20Valse.mp3"
+  },
+  track095: {
+    composer: "Ravel",
+    title: "Menuet antique",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Ravel%20Menuet%20antique.mp3"
+  },
+  track096: {
+    composer: "Richard Strauss",
+    title: "Don Juan",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Richard%20Strauss%20Don%20Juan.mp3"
+  },
+  track097: {
+    composer: "Richard Strauss",
+    title: "Imígyen szóla Zarathustra",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Richard%20Strauss%20Imígyen%20szóla%20Zarathustra.mp3"
+  },
+  track098: {
+    composer: "Richard Strauss",
+    title: "Négy utolsó dal (Im Abendrot)",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Richard%20Strauss%20Négy%20utolsó%20dal%20(Im%20Abendrot).mp3"
+  },
+  track099: {
+    composer: "Richard Strauss",
+    title: "Salome, a hét fátyol tánca",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Richard%20Strauss%20Salome,%20a%20hét%20fátyol%20tánca.mp3"
+  },
+  track100: {
+    composer: "Rimszkij-Korszakov",
+    title: "Seherezádé",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Rimszkij-Korszakov%20Seherezádé.mp3"
+  },
+  track101: {
+    composer: "Rossini",
+    title: "A tolvaj szarka nyitány",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Rossini%20A%20tolvaj%20szarka%20nyitány.mp3"
+  },
+  track102: {
+    composer: "Rossini",
+    title: "Agnus dei a Kis ünnepi miséből",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Rossini%20Agnus%20dei%20a%20Kis%20ünnepi%20miséből.mp3"
+  },
+  track103: {
+    composer: "Saint-Saens",
+    title: "- Danse Macabre",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Saint-Saens%20-%20Danse%20Macabre.mp3"
+  },
+  track104: {
+    composer: "Schubert",
+    title: "2. zongoratrió, 2. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Schubert%202.%20zongoratrió,%202.%20tétel.mp3"
+  },
+  track105: {
+    composer: "Schubert",
+    title: "8. (befejezetlen) szinfónia, 1. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Schubert%208.%20(befejezetlen)%20szinfónia,%201.%20tétel.mp3"
+  },
+  track106: {
+    composer: "Schubert",
+    title: "Gretchen am spinnrade",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Schubert%20Gretchen%20am%20spinnrade.mp3"
+  },
+  track107: {
+    composer: "Schubert",
+    title: "Winterreise (A kintornás)",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Schubert%20Winterreise%20(A%20kintornás).mp3"
+  },
+  track108: {
+    composer: "Schubert",
+    title: "Winterreise (Gute Nacht)",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Schubert%20Winterreise%20(Gute%20Nacht).mp3"
+  },
+  track109: {
+    composer: "Schumann",
+    title: "3. (Rajnai) Szimfónia",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Schumann%203.%20(Rajnai)%20Szimfónia.mp3"
+  },
+  track110: {
+    composer: "Schumann",
+    title: "A-moll zongoraverseny, 1. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Schumann%20A-moll%20zongoraverseny,%201.%20tétel.mp3"
+  },
+  track111: {
+    composer: "Schumann",
+    title: "Zongoraötös, 4. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Schumann%20Zongoraötös,%204.%20tétel.mp3"
+  },
+  track112: {
+    composer: "Sergei",
+    title: "Rachmaninov Francesca da Rimini",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Sergei%20Rachmaninov%20Francesca%20da%20Rimini.mp3"
+  },
+  track113: {
+    composer: "Sibelius",
+    title: "En Saga (Monda)",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Sibelius%20En%20Saga%20(Monda).mp3"
+  },
+  track114: {
+    composer: "Sosztakovics",
+    title: "8. vonósnégyes 2. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Sosztakovics%208.%20vonósnégyes%202.%20tétel.mp3"
+  },
+  track115: {
+    composer: "Sosztakovics",
+    title: "10. szimfónia, 2. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Sosztakovics%2010.%20szimfónia,%202.%20tétel.mp3"
+  },
+  track116: {
+    composer: "Sosztakovics",
+    title: "2. zongoraverseny, 2. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Sosztakovics%202.%20zongoraverseny,%202.%20tétel.mp3"
+  },
+  track117: {
+    composer: "Sosztakovics",
+    title: "Foxtrot az 1. Jazz szvitből",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Sosztakovics%20Foxtrot%20az%201.%20Jazz%20szvitből.mp3"
+  },
+  track118: {
+    composer: "Szkjabin",
+    title: "Az extázis költeménye",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Szkjabin%20Az%20extázis%20költeménye.mp3"
+  },
+  track119: {
+    composer: "Sztravinszkij",
+    title: "Mennyegző",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Sztravinszkij%20Mennyegző.mp3"
+  },
+  track120: {
+    composer: "Sztravinszkij",
+    title: "Pulcinella",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Sztravinszkij%20Pulcinella.mp3"
+  },
+  track121: {
+    composer: "Sztravinszkij",
+    title: "Tavaszi áldozat",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Sztravinszkij%20Tavaszi%20áldozat.mp3"
+  },
+  track122: {
+    composer: "Sztravinszkij",
+    title: "Tűzmadármp3",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Sztravinszkij%20Tűzmadármp3.mp3"
+  },
+  track123: {
+    composer: "Verdi",
+    title: "Trubadúr, Cigánykórus",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Verdi%20Trubadúr,%20Cigánykórus.mp3"
+  },
+  track124: {
+    composer: "Vivaldi",
+    title: "D-moll csellóverseny",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Vivaldi%20D-moll%20csellóverseny.mp3"
+  },
+  track125: {
+    composer: "Vivaldi",
+    title: "Négy évszak - tél, 1. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Vivaldi%20Négy%20évszak%20-%20tél,%201.%20tétel.mp3"
+  },
+  track126: {
+    composer: "Vivaldi",
+    title: "Négy évszak, nyár 3. tétel",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Vivaldi%20Négy%20évszak,%20nyár%203.%20tétel.mp3"
+  },
+  track127: {
+    composer: "Webern",
+    title: "- Concerto 9 hangszerre",
+    url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Webern%20-%20Concerto%209%20hangszerre.mp3"
   }
 };
 
