@@ -774,7 +774,7 @@ const tracks = {
 }
 };
 
-const minigames = {
+const minigame = {
   "mini1": {
     tracks: ["m1.1","m1.2","m1.3","m1.4","m1.5","m1.6","m1.7","m1.8","m1.9","m1.10","m1.11","m1.12","m1.13","m1.14","m1.15","m1.16"],
     limit: 5
@@ -1121,7 +1121,7 @@ function shuffleArray(a){
 }
 
 function startMiniGame(miniName){
-  const mg = minigames[miniName];
+  const mg = minigame[miniName];
   if(!mg || !mg.tracks || mg.tracks.length === 0) return;
   currentMinigame = miniName;
   miniCycles = 0;
@@ -1134,7 +1134,7 @@ function startMiniGame(miniName){
 }
 
 function playNextInMini(){
-  const mg = minigames[currentMinigame];
+  const mg = minigame[currentMinigame];
   if(miniCycles >= (mg?.limit || Infinity) || minigameQueue.length === 0){
     currentMinigame = null;
     hint.textContent = "";
