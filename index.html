@@ -54,7 +54,7 @@ Tippelj! Ha a zeneszerzőt és a darabot is eltalálod, kapsz egy negyedet. Ha c
 /* -------------------- CONFIG -------------------- */
 const tracks = {
 "track001": {
-  title: "Air",
+  title: "Air a 3., D-dúr szvitből",
   composer: "Bach",
   url: "https://pub-2773806ec26d42008de0aaedc88c2e6f.r2.dev/Bach Air.mp3"
 },
@@ -1344,11 +1344,11 @@ answerBtn.addEventListener('click', ()=>{
   audio.pause(); playBtn.textContent="Play";
   if(currentMinigame){
     const meta = extraTracks[lastPlayedInMini] || tracks[lastPlayedInMini];
-    miniAnswerText.textContent = `${meta.title} — ${meta.composer}`;
+    miniAnswerText.textContent = `${meta.composer} — ${meta.title}`;
     showScreen(screen3);
   } else {
     const meta = tracks[currentTrack];
-    answerText.textContent = `${meta.title} — ${meta.composer}`;
+    answerText.textContent = `${meta.composer} — ${meta.title}`;
     showScreen(screen2);
   }
 });
@@ -1359,7 +1359,7 @@ exitMiniBtn.addEventListener('click', ()=>{
   currentMinigame = null;
   minigameQueue = [];
   const parent = tracks[currentTrack];
-  if(parent){ answerText.textContent=`${parent.title} — ${parent.composer}`; showScreen(screen2); }
+  if(parent){ answerText.textContent=`${parent.composer} — ${parent.title}`; showScreen(screen2); }
   else showScreen(screen1);
 });
 
